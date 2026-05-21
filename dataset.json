@@ -1,0 +1,382 @@
+[
+    {
+        "frame": 0,
+        "sensors": {
+            "gnss": {
+                "latitude": 71.31274,
+                "longitude": 98.49688,
+                "altitude": 96.95997
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 28.61772,
+                    "y": 42.03842,
+                    "z": 95.44682
+                },
+                "gyroscope": {
+                    "x": 14.33667,
+                    "y": 46.87235,
+                    "z": 26.52861
+                },
+                "compass": 37.57288
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000000.png"
+            },
+            "Radar": {
+                "num_detections": 36,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000000.bin"
+            },
+            "LiDAR": {
+                "num_points": 55,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000000.bin"
+            }
+        }
+    },
+    {
+        "frame": 1,
+        "sensors": {
+            "gnss": {
+                "latitude": 45.20613,
+                "longitude": 13.90189,
+                "altitude": 85.74086
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 55.75599,
+                    "y": 88.59999,
+                    "z": 34.95963
+                },
+                "gyroscope": {
+                    "x": 84.81141,
+                    "y": 68.23239,
+                    "z": 37.76164
+                },
+                "compass": 29.26947
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000001.png"
+            },
+            "Radar": {
+                "num_detections": 63,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000001.bin"
+            },
+            "LiDAR": {
+                "num_points": 90,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000001.bin"
+            }
+        }
+    },
+    {
+        "frame": 2,
+        "sensors": {
+            "gnss": {
+                "latitude": 80.84088,
+                "longitude": 34.74898,
+                "altitude": 86.31706
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 27.75423,
+                    "y": 85.57106,
+                    "z": 90.85547
+                },
+                "gyroscope": {
+                    "x": 95.93265,
+                    "y": 72.67258,
+                    "z": 15.24499
+                },
+                "compass": 91.3869
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000002.png"
+            },
+            "Radar": {
+                "num_detections": 13,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000002.bin"
+            },
+            "LiDAR": {
+                "num_points": 91,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000002.bin"
+            }
+        }
+    },
+    {
+        "frame": 3,
+        "sensors": {
+            "gnss": {
+                "latitude": 14.31667,
+                "longitude": 89.91373,
+                "altitude": 64.52292
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 83.62253,
+                    "y": 15.93719,
+                    "z": 98.54181
+                },
+                "gyroscope": {
+                    "x": 36.04252,
+                    "y": 51.05664,
+                    "z": 46.06755
+                },
+                "compass": 26.13024
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000003.png"
+            },
+            "Radar": {
+                "num_detections": 23,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000003.bin"
+            },
+            "LiDAR": {
+                "num_points": 88,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000003.bin"
+            }
+        }
+    },
+    {
+        "frame": 4,
+        "sensors": {
+            "gnss": {
+                "latitude": 29.03572,
+                "longitude": 96.46467,
+                "altitude": 42.45121
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 10.5584,
+                    "y": 63.18271,
+                    "z": 97.47998
+                },
+                "gyroscope": {
+                    "x": 53.55735,
+                    "y": 31.99838,
+                    "z": 55.82079
+                },
+                "compass": 38.93226
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000004.png"
+            },
+            "Radar": {
+                "num_detections": 33,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000004.bin"
+            },
+            "LiDAR": {
+                "num_points": 96,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000004.bin"
+            }
+        }
+    },
+    {
+        "frame": 5,
+        "sensors": {
+            "gnss": {
+                "latitude": 78.04882,
+                "longitude": 58.68072,
+                "altitude": 90.27365
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 34.41389,
+                    "y": 69.74284,
+                    "z": 26.10382
+                },
+                "gyroscope": {
+                    "x": 67.66934,
+                    "y": 90.37615,
+                    "z": 52.63545
+                },
+                "compass": 93.29376
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000005.png"
+            },
+            "Radar": {
+                "num_detections": 51,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000005.bin"
+            },
+            "LiDAR": {
+                "num_points": 14,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000005.bin"
+            }
+        }
+    },
+    {
+        "frame": 6,
+        "sensors": {
+            "gnss": {
+                "latitude": 99.06856,
+                "longitude": 83.94745,
+                "altitude": 60.66752
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 84.10514,
+                    "y": 79.37401,
+                    "z": 68.59942
+                },
+                "gyroscope": {
+                    "x": 48.59622,
+                    "y": 34.34179,
+                    "z": 44.56257
+                },
+                "compass": 76.57457
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000006.png"
+            },
+            "Radar": {
+                "num_detections": 30,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000006.bin"
+            },
+            "LiDAR": {
+                "num_points": 59,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000006.bin"
+            }
+        }
+    },
+    {
+        "frame": 7,
+        "sensors": {
+            "gnss": {
+                "latitude": 94.10505,
+                "longitude": 30.41941,
+                "altitude": 18.61355
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 51.23094,
+                    "y": 26.15998,
+                    "z": 68.96955
+                },
+                "gyroscope": {
+                    "x": 42.31145,
+                    "y": 69.91379,
+                    "z": 40.07252
+                },
+                "compass": 27.04714
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000007.png"
+            },
+            "Radar": {
+                "num_detections": 52,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000007.bin"
+            },
+            "LiDAR": {
+                "num_points": 76,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000007.bin"
+            }
+        }
+    },
+    {
+        "frame": 8,
+        "sensors": {
+            "gnss": {
+                "latitude": 76.57646,
+                "longitude": 46.35186,
+                "altitude": 15.99715
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 73.45761,
+                    "y": 51.60852,
+                    "z": 16.77699
+                },
+                "gyroscope": {
+                    "x": 87.96122,
+                    "y": 42.43555,
+                    "z": 70.80971
+                },
+                "compass": 57.72859
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000008.png"
+            },
+            "Radar": {
+                "num_detections": 93,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000008.bin"
+            },
+            "LiDAR": {
+                "num_points": 90,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000008.bin"
+            }
+        }
+    },
+    {
+        "frame": 9,
+        "sensors": {
+            "gnss": {
+                "latitude": 26.6754,
+                "longitude": 29.90984,
+                "altitude": 79.92312
+            },
+            "imu": {
+                "accelerometer": {
+                    "x": 92.74932,
+                    "y": 93.44182,
+                    "z": 74.27702
+                },
+                "gyroscope": {
+                    "x": 67.25236,
+                    "y": 15.91978,
+                    "z": 87.28369
+                },
+                "compass": 83.56226
+            },
+            "CameraRGB": {
+                "x": 1920,
+                "y": 1080,
+                "fov": 90,
+                "frameURI": "C:/Vehicle/rgb_00000009.png"
+            },
+            "Radar": {
+                "num_detections": 66,
+                "cloudUri": "C:/Vehcile/radar_cloud_00000009.bin"
+            },
+            "LiDAR": {
+                "num_points": 96,
+                "horizontal_angle": 20,
+                "cloudUri": "C:/Vehicle/lidar_cloud_00000009.bin"
+            }
+        }
+    }
+]
