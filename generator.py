@@ -57,6 +57,43 @@ def parse_args():
         default = 'all',
         help = 'Comma-separated list of sensors gnss,imu,camera,radar,lidar (default: all)'
     )
+    parser.add_argument(
+        '--lat-int',
+        type = int,
+        default = 2,
+        help = 'Number of integer digits for latitude.'
+    )
+    parser.add_argument(
+        '--long-int',
+        type = int,
+        default = 2,
+        help = 'Number of integer digits for longitude.'
+    )
+    parser.add_argument(
+        '--alt-int',
+        type = int,
+        default = 3,
+        help = 'Number of integer digits for altitude.'
+    )
+    parser.add_argument(
+        '--compass-int',
+        type = int,
+        default = 3,
+        help = 'Number of integer digits for compass.'
+    )
+    parser.add_argument(
+        '--accel-int',
+        type = int,
+        default = 2,
+        help = 'Number of integer digits for accelerometer values'
+    )
+    parser.add_argument(
+        '--gyro-int',
+        type = int,
+        default = 3,
+        help = 'Number of integer digits for gyroscope values'
+    )
+
     args = parser.parse_args()
 
     if not args.interactive and args.minutes is None and args.frames is None:
@@ -73,8 +110,16 @@ def args_to_settings(args):
     if not filename.endswith('.json'):
         filename += '.json'
     sensors = parse_sensors(args.sensors)
+    int_digits = {
+        'lat': args.lat_int,
+        'lon': args.lon_int,
+        'alt': args.alt_int,
+        'compass': args.compass_int,
+        'accel': args.accel_int,
+        'gyro': args.gyro_int
+    }
 
-    return num_frames, args.precision, filename, sensors
+    return num_frames, args.precision, filename, sensors, int_digits
 
 def ask_int(prompt, min_val = None, max_val = None):
     """
@@ -199,6 +244,24 @@ def interactive_tune():
     # Select sensors
     sensors = ask_sensors_interactive()
 
+    # Integer digits
+    print('Integer digits for sensor values (only positive ranges):')
+    lat_int = ask_int('Latitude integer digits [1-2]:', 1, 2)
+    lon_int = ask_int('Longitude integer digits [1-3]:', 1, 3)
+    alt_int = ask_int('Altitude integer digits [1-4]:', 1, 4)
+    compass_int = ask_int('Compass integer digits [1-3]', 1, 3)
+    accel_int = ask_int('Accelerometer integer digits [1-2]:', 1, 2)
+    gyro_int = ask_int('Gyroscope integer digits [1-3]:', 1, 3)
+
+    int_digits = {
+        'lat': lat_int,
+        'lon': lon_int,
+        'alt': alt_int,
+        'compass': compass_int,
+        'accel': accel_int,
+        'gyro': gyro_int
+    }
+
     # Settings
     print('=' * 30)
     print('  SETTINGS')
@@ -207,15 +270,25 @@ def interactive_tune():
     print(f'  [+] Precision: {precision} decimals')
     print(f'  [+] Filename:  {filename}')
     print(f'  [+] Sensors:   {', '.join(sorted(sensors))}')
+    print(f'  [+] Digits:    lat={lat_int}, long={lon_int}, alt={alt_int}, compass={compass_int}, accel={accel_int}, gyro={gyro_int}')
     print('=' * 30)
 
-    return num_frames, precision, filename, sensors
+    return num_frames, precision, filename, sensors, int_digits
 
-def gen_dec_val(precision):
-    value = np.random.uniform(10.0, 99.0)
-    return f'{value:.{precision}f}'
+def gen_bounded_value(min_val, max_val, int_digits, precision):
+    max_integer = 10 ** int_digits - 1
 
-def generate_synthetic_data(num_frames, precision, filename, enabled_sensors):
+    if min_val < 0:
+        lower = max(min_val, -max_integer)
+    else:
+        lower = max(min_val, 0)
+
+    upper = min(max_val, max_integer)
+
+    value = np.random.uniform(lower, upper)
+    return round(value, precision)
+
+def generate_synthetic_data(num_frames, precision, filename, enabled_sensors, int_digits):
     """
     Generate synthetic data for the supported sensors. The data is generated based on the 
     sensor type and the user's input. The generated data is saved in a JSON file.
@@ -225,6 +298,7 @@ def generate_synthetic_data(num_frames, precision, filename, enabled_sensors):
     print(f'--> {precision} decimals.')
     print(f'--> Exporting to: {filename}')
     print(f'--> Sensors: {', '.join(sorted(enabled_sensors))}')
+    print(f'--> Integer digits: {int_digits}')
     print('-' * 40 + '\n')
 
     dataset = []
@@ -238,25 +312,25 @@ def generate_synthetic_data(num_frames, precision, filename, enabled_sensors):
         # GNSS
         if 'gnss' in enabled_sensors:
             frame_data['sensors']['gnss'] = {
-                'latitude': gen_dec_val(precision),
-                'longitude': gen_dec_val(precision),
-                'altitude': gen_dec_val(precision),
+                'latitude': gen_bounded_value(0.0, 90.0, int_digits['lat'], precision),
+                'longitude': gen_bounded_value(0.0, 180.0, int_digits['lon'], precision),
+                'altitude': gen_bounded_value(0.0, 9000.0, int_digits['alt'], precision)
             }
         
         # IMU
         if 'imu' in enabled_sensors:
             frame_data['sensors']['imu'] = {
                 'accelerometer': {
-                    'x': gen_dec_val(precision),
-                    'y': gen_dec_val(precision),
-                    'z': gen_dec_val(precision)
+                    'x': gen_bounded_value(0.0, 16.0, int_digits['accel'], precision),
+                    'y': gen_bounded_value(0.0, 16.0, int_digits['accel'], precision),
+                    'z': gen_bounded_value(0.0, 16.0, int_digits['accel'], precision)
                 },
                 'gyroscope': {
-                    'x': gen_dec_val(precision),
-                    'y': gen_dec_val(precision),
-                    'z': gen_dec_val(precision)
+                    'x': gen_bounded_value(0.0, 360.0, int_digits['gyro'], precision),
+                    'y': gen_bounded_value(0.0, 360.0, int_digits['gyro'], precision),
+                    'z': gen_bounded_value(0.0, 360.0, int_digits['gyro'], precision)
                 },
-                'compass': gen_dec_val(precision)
+                'compass': gen_bounded_value(0.0, 360.0, int_digits['compass'], precision)
             }
         
         # Camera RGB
@@ -292,8 +366,8 @@ if __name__ == "__main__":
     args = parse_args()
 
     if args.interactive:
-        num_frames, precision, filename, sensors = interactive_tune()
+        num_frames, precision, filename, sensors, int_digits = interactive_tune()
     else:
-        num_frames, precision, filename, sensors = args_to_settings()
+        num_frames, precision, filename, sensors, int_digits = args_to_settings()
 
-    generate_synthetic_data(num_frames, precision, filename, sensors)
+    generate_synthetic_data(num_frames, precision, filename, sensors, int_digits)
