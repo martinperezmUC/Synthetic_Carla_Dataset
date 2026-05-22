@@ -8,7 +8,7 @@ by CARLA Simulator. Currently supports the generation of data for the following 
 - Radar
 
 @author: Mario Martín <martinperezm@unican.es>
-@version: 0.2
+@version: 0.3
 """
 
 import json
@@ -51,7 +51,12 @@ def parse_args():
         action = 'store_true',
         help = 'Use interactive mode'
     )
-
+    parser.add_argument(
+        '--sensors', '-s',
+        type = str,
+        default = 'all',
+        help = 'Comma-separated list of sensors gnss,imu,camera,radar,lidar (default: all)'
+    )
     args = parser.parse_args()
 
     if not args.interactive and args.minutes is None and args.frames is None:
@@ -67,8 +72,9 @@ def args_to_settings(args):
     filename = args.output
     if not filename.endswith('.json'):
         filename += '.json'
+    sensors = parse_sensors(args.sensors)
 
-    return num_frames, args.precision, filename
+    return num_frames, args.precision, filename, sensors
 
 def ask_int(prompt, min_val = None, max_val = None):
     """
@@ -98,7 +104,61 @@ def ask_str(prompt, default = None):
    
     value = input(f'  >>> {prompt}{default_str} ').strip()
     return value or default
+
+def parse_sensors(sensors_str):
+    """
     
+    """
+    if sensors_str.lower() == 'all':
+        return {'gnss', 'imu', 'camera', 'radar', 'lidar'}
+    
+    valid_sensors = {'gnss', 'imu', 'camera', 'radar', 'lidar'}
+    enabled = set(s.strip().lower() for s in sensors_str.split(','))
+
+    invalid = enabled - valid_sensors
+
+    if invalid:
+        print(f'  [!] Invalid sensors: {', '.join(invalid)}')
+        print(f'  [+] Valid sensors: {','.join(valid_sensors)}')
+        return valid_sensors
+    
+    return enabled if enabled else valid_sensors
+
+def ask_sensors_interactive():
+    """
+    """
+    sensors = {'gnss', 'imu', 'camera', 'radar', 'lidar'}
+    selected = set()
+
+    # Select sensors
+    print('Select sensors to generate:')
+    print('  [1] GNSS')
+    print('  [2] IMU')
+    print('  [3] Camera RGB')
+    print('  [4] Radar')
+    print('  [5] LiDAR')
+    print('  [0] All sensors')
+
+    choice = ask_str('Sensors [0-5]:', '0').strip()
+
+    if choice == '0' or choice.lower() == 'all':
+        selected = sensors 
+    else:
+        sensor_map = {
+            '1': 'gnss',
+            '2': 'imu',
+            '3': 'camera',
+            '4': 'radar',
+            '5': 'lidar'
+        }
+
+        for digit in choice.split(','):
+            digit = digit.strip()
+            if digit in sensor_map:
+                selected.add(sensor_map[digit])
+    
+    return selected if selected else sensors
+
 def interactive_tune():
     """
 
@@ -136,29 +196,35 @@ def interactive_tune():
         filename += '.json'
     print(f'  [+] Save in: ./{filename}\n')
 
+    # Select sensors
+    sensors = ask_sensors_interactive()
+
     # Settings
     print('=' * 30)
     print('  SETTINGS')
     print('=' * 30)
-    print(f'  * Frames:    {num_frames} frames')
-    print(f'  * Precision: {precision} decimals')
-    print(f'  * Filename:  {filename}')
+    print(f'  [+] Frames:    {num_frames} frames')
+    print(f'  [+] Precision: {precision} decimals')
+    print(f'  [+] Filename:  {filename}')
+    print(f'  [+] Sensors:   {', '.join(sorted(sensors))}')
     print('=' * 30)
 
-    return num_frames, precision, filename
+    return num_frames, precision, filename, sensors
 
 def gen_dec_val(precision):
-    return round(np.random.uniform(10.0, 99.9), precision)
+    value = np.random.uniform(10.0, 99.0)
+    return f'{value:.{precision}f}'
 
-def generate_synthetic_data(num_frames, precision, filename):
+def generate_synthetic_data(num_frames, precision, filename, enabled_sensors):
     """
     Generate synthetic data for the supported sensors. The data is generated based on the 
     sensor type and the user's input. The generated data is saved in a JSON file.
     """
     print('Starting simulation with: ')
     print(f'--> {num_frames} frames.')
-    print(f'--> {precision} decimales.')
+    print(f'--> {precision} decimals.')
     print(f'--> Exporting to: {filename}')
+    print(f'--> Sensors: {', '.join(sorted(enabled_sensors))}')
     print('-' * 40 + '\n')
 
     dataset = []
@@ -166,42 +232,55 @@ def generate_synthetic_data(num_frames, precision, filename):
     for frame in range(num_frames):
         frame_data = {
             'frame': int(frame),
-            'sensors': {
-                'gnss': {
-                    'latitude': gen_dec_val(precision),
-                    'longitude':gen_dec_val(precision),
-                    'altitude': gen_dec_val(precision)
-                },
-                'imu': {
-                    'accelerometer': {
-                        'x': gen_dec_val(precision),
-                        'y': gen_dec_val(precision),
-                        'z': gen_dec_val(precision)
-                    },
-                    'gyroscope': {
-                        'x': gen_dec_val(precision),
-                        'y': gen_dec_val(precision),
-                        'z': gen_dec_val(precision)
-                    },
-                    'compass': gen_dec_val(precision)
-                },
-                'CameraRGB': {
-                    'x': 1920,
-                    'y': 1080,
-                    'fov': 90,
-                    'frameURI': f'C:/Vehicle/rgb_{frame:08d}.png'
-                },
-                'Radar': {
-                    'num_detections': int(np.random.randint(10, 99)),
-                    'cloudUri': f'C:/Vehcile/radar_cloud_{frame:08d}.bin'
-                },
-                'LiDAR': {
-                    'num_points': int(np.random.randint(10, 99)),
-                    'horizontal_angle': 20,
-                    'cloudUri': f'C:/Vehicle/lidar_cloud_{frame:08d}.bin'
-                }
-            }
+            'sensors': {}
         }
+
+        # GNSS
+        if 'gnss' in enabled_sensors:
+            frame_data['sensors']['gnss'] = {
+                'latitude': gen_dec_val(precision),
+                'longitude': gen_dec_val(precision),
+                'altitude': gen_dec_val(precision),
+            }
+        
+        # IMU
+        if 'imu' in enabled_sensors:
+            frame_data['sensors']['imu'] = {
+                'accelerometer': {
+                    'x': gen_dec_val(precision),
+                    'y': gen_dec_val(precision),
+                    'z': gen_dec_val(precision)
+                },
+                'gyroscope': {
+                    'x': gen_dec_val(precision),
+                    'y': gen_dec_val(precision),
+                    'z': gen_dec_val(precision)
+                },
+                'compass': gen_dec_val(precision)
+            }
+        
+        # Camera RGB
+        if 'camera' in enabled_sensors:
+            frame_data['sensors']['CameraRGB'] = {
+                'x': 1920,
+                'y': 1080,
+                'fov': 90,
+                'frameURI': f'C:/Vehicle/rgb_{frame:08d}.png'
+            }
+        
+        # Radar
+        if 'radar' in enabled_sensors:
+            frame_data['sensors']['Radar'] = {
+                'num_detections': int(np.random.randint(10, 99)),
+                'cloudUri': f'C:/Vehicle/radar_cloud_{frame:08d}.bin'
+            }
+
+        if 'lidar' in enabled_sensors:
+            frame_data['sensors']['LiDAR'] = {
+                'num_points': int(np.random.randint(10,99)),
+                'horizontal_angle': 20,
+                'cloudUri': f'C:/Vehicle/lidar_cloud_{frame:08d}.bin'
+            }
         dataset.append(frame_data)
     
     with open(filename, 'w') as f:
@@ -213,8 +292,8 @@ if __name__ == "__main__":
     args = parse_args()
 
     if args.interactive:
-        num_frames, precision, filename = interactive_tune()
+        num_frames, precision, filename, sensors = interactive_tune()
     else:
-        num_frames, precision, filename = args_to_settings()
+        num_frames, precision, filename, sensors = args_to_settings()
 
-    generate_synthetic_data(num_frames, precision, filename)
+    generate_synthetic_data(num_frames, precision, filename, sensors)
