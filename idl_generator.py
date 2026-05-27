@@ -34,7 +34,8 @@ class TypeRegistry:
         Returns:
             str: Unique name generated from initial name.
         """
-        cleaned = ''.join(ch if ch.isalnum() else ' ' for ch in base)
+        cleaned = base.replace('_', ' ').replace('-', ' ')
+        cleaned = ''.join(ch if ch.isalnum() else ' ' for ch in cleaned)
         name = cleaned.title().replace(' ', '')
 
         if name and name[0].isdigit(): # If sensor name is a number or begins with it
@@ -116,10 +117,10 @@ def infer_struct(name_base: str, obj: dict, registry: TypeRegistry, path: tuple 
     """
     fields = OrderedDict()
     for k, v in obj.items():
+        current_path = path + (k,)
         if isinstance(v, dict):
-            pascal_k = k.replace('_', ' ').replace('-', ' ').title().replace(' ', '')
-            nested_name = registry.unique_name(pascal_k)
-            infer_struct(nested_name, v, registry, path=tuple(list(path) + [k]), lens=lens)
+            nested_name = registry.unique_name(k)
+            infer_struct(nested_name, v, registry, pat = current_path, lens=lens)
             fields[k] = ('struct', nested_name)
         else:
             # primitive (or numeric string)
@@ -206,20 +207,46 @@ def sensors_to_structs(sensors_dict: dict, registry: TypeRegistry, lens: dict = 
             # primitive sensor -> wrap in a struct with one value field
             registry.register_struct(struct_name, OrderedDict([('value', map_primitive(example))]))
 
-def record_lens(prefix, obj, lens):
-        # prefix: tuple of keys leading to obj
-        if isinstance(obj, dict): # Dictionaries
-            for k, v in obj.items():
-                record_lens(prefix + (k,), v, lens)
-        elif isinstance(obj, str): # Final value. Check if str and record length
-            if prefix not in lens:
-                lens[prefix] = len(obj)
+def record_lens(prefix: tuple, obj: dict | str, lens: dict):
+    """
+    Recursively traverses a data structure to record the length of leaf string values.
+
+    This function walks through nested dictionaries to find final primitive values.
+    When it encounters a string, it stores its character length in the provided 'lens'
+    dictionary, using the full path sequence of keys (as a tuple) as the unique identifier.
+    It mutates the 'lens' dictionary in place and avoids overwriting existing paths.
+
+
+    Args:
+        prefix (tuple): A sequence of keys representing the current path leading to the
+                        object. Example: ('imu', 'accelerometer').
+        obj (dict | str): The current object or data snippet being inspected.
+        lens (dict): The shared dictionary where calculated string lengths are stored
+                    as reference lookups.
+    """
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            record_lens(prefix + (k,), v, lens)
+    elif isinstance(obj, str): # Final value. Check if str and record length
+        if prefix not in lens:
+            lens[prefix] = len(obj)
 
 def main():
-    parser = argparse.ArgumentParser(description='Generate IDL for FastDDS based on dataset.json file.')
-    parser.add_argument('--input', '-i', default='dataset.json', help='Input JSON file.')
-    parser.add_argument('--module', '-m', default='SyntheticData', help='IDL Module name.')
-    parser.add_argument('--out', '-o', default='dataset.idl', help='Output IDL file.')
+    """
+    Main execution pipeline to generate a FastDDS IDL file froma JSON dataset.
+
+    This function coordinates the entire generation process through the following steps:
+    1. Parses command-line arguments for input/output files and module naming.
+    2. Iterates through the JSON dataset to extract unique sensor examples and compute string lengths
+    via 'record_lens'.
+    3. Translates sensor definitions into IDL-compatible structures using 'sensors_to_structs'.
+    4. Constructs a top-level encapsulating 'Frame' structure that references all sensors.
+    5. Serializes the final type registry into IDL syntax and writes it to the output file.
+    """
+    parser = argparse.ArgumentParser(description = 'Generate IDL for FastDDS based on dataset.json file.')
+    parser.add_argument('--input', '-i', default = 'dataset.json', help = 'Input JSON file.')
+    parser.add_argument('--module', '-m', default = 'SyntheticData', help = 'IDL Module name.')
+    parser.add_argument('--out', '-o', default = 'dataset.idl', help = 'Output IDL file.')
     args = parser.parse_args()
 
     with open(args.input, 'r', encoding='utf-8') as f:
