@@ -6,7 +6,7 @@ Use:
 Basic type inferetion and nested structures.
 
 @author: Mario Martín <martinperezm@unican.es>
-@version: 0.1
+@version: 0.2
 """
 import argparse
 import json
@@ -120,15 +120,13 @@ def infer_struct(name_base: str, obj: dict, registry: TypeRegistry, path: tuple 
         current_path = path + (k,)
         if isinstance(v, dict):
             nested_name = registry.unique_name(k)
-            infer_struct(nested_name, v, registry, pat = current_path, lens=lens)
+            infer_struct(nested_name, v, registry, path = current_path, lens=lens)
             fields[k] = ('struct', nested_name)
         else:
-            # primitive (or numeric string)
-            cur_path = tuple(list(path) + [k])
             len = None
             if lens is not None:
-                len = lens.get(cur_path)
-            fields[k] = map_primitive(v, len=len)
+                len = lens.get(current_path)
+            fields[k] = map_primitive(v, len = len)
     registry.register_struct(name_base, fields)
     return name_base
 
@@ -162,10 +160,10 @@ def generate_idl(module_name: str, registry: TypeRegistry, top_struct_name: str 
         lines.append(f'\tstruct {name} {{')
         for fname, ftype in fields.items():
             if isinstance(ftype, tuple) and ftype[0] == 'struct':
-                lines.append(f'\t{ftype[1]} {fname};')
+                lines.append(f'\t\t{ftype[1]} {fname};')
             else:
-                lines.append(f'\t{ftype} {fname};')
-        lines.append('  };')
+                lines.append(f'\t\t{ftype} {fname};')
+        lines.append('\t};')
         lines.append('')
 
     # Ensure top-level Frame exists
@@ -173,7 +171,7 @@ def generate_idl(module_name: str, registry: TypeRegistry, top_struct_name: str 
         # create a default Frame with a frame index
         registry.register_struct(top_struct_name, OrderedDict([('frame', 'int32')]))
         lines.append(f'\tstruct {top_struct_name} {{')
-        lines.append('\tint32 frame;')
+        lines.append('\n\tint32 frame;\n\t')
         lines.append('  };')
         lines.append('')
 
@@ -202,7 +200,7 @@ def sensors_to_structs(sensors_dict: dict, registry: TypeRegistry, lens: dict = 
     for sensor_name, example in sensors_dict.items():
         struct_name = registry.unique_name(sensor_name)
         if isinstance(example, dict):
-            infer_struct(struct_name, example, registry, path=(sensor_name,), lens=lens)
+            infer_struct(struct_name, example, registry, path=(sensor_name,), lens = lens)
         else:
             # primitive sensor -> wrap in a struct with one value field
             registry.register_struct(struct_name, OrderedDict([('value', map_primitive(example))]))
@@ -267,11 +265,12 @@ def main():
     registry = TypeRegistry()
 
     # create sensor structs (pass maxlens and flags)
-    sensors_to_structs(sensors_examples, registry, lens=lens)
+    sensors_to_structs(sensors_examples, registry, lens = lens)
 
     # create Frame struct referencing sensors
     frame_fields = OrderedDict()
     frame_fields['frame'] = 'int32'
+    
     for sensor_name in sensors_examples.keys():
         struct_name = None
         # find registered struct matching sensor (by starting name)
