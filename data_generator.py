@@ -286,7 +286,7 @@ def gen_bounded_value(min_val, max_val, int_digits, precision):
     upper = min(max_val, max_integer)
 
     value = np.random.uniform(lower, upper)
-    return round(value, precision)
+    return round(float(value), precision)
 
 def generate_synthetic_data(num_frames, precision, filename, enabled_sensors, int_digits):
     """
