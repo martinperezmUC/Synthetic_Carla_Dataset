@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<dds xmlns="http://www.eprosima.com" version="1.0">
+	<types>
+		<struct name="Gnss">
+			<member name="latitude" type="double"/>
+			<member name="longitude" type="double"/>
+			<member name="altitude" type="double"/>
+		</struct>
+		<struct name="Accelerometer">
+			<member name="x" type="double"/>
+			<member name="y" type="double"/>
+			<member name="z" type="double"/>
+		</struct>
+		<struct name="Gyroscope">
+			<member name="x" type="double"/>
+			<member name="y" type="double"/>
+			<member name="z" type="double"/>
+		</struct>
+		<struct name="Imu">
+			<member name="accelerometer" type="nonBasic" nonBasicTypeName="Accelerometer"/>
+			<member name="gyroscope" type="nonBasic" nonBasicTypeName="Gyroscope"/>
+			<member name="compass" type="double"/>
+		</struct>
+		<struct name="Camerargb">
+			<member name="x" type="int32"/>
+			<member name="y" type="int32"/>
+			<member name="fov" type="int32"/>
+			<member name="frameURI" type="string" stringMaxLength="27"/>
+		</struct>
+		<struct name="Radar">
+			<member name="num_detections" type="int32"/>
+			<member name="cloudUri" type="string" stringMaxLength="35"/>
+		</struct>
+		<struct name="Lidar">
+			<member name="num_points" type="int32"/>
+			<member name="horizontal_angle" type="int32"/>
+			<member name="cloudUri" type="string" stringMaxLength="35"/>
+		</struct>
+		<struct name="Frame">
+			<member name="frame" type="int32"/>
+			<member name="gnss" type="nonBasic" nonBasicTypeName="Gnss"/>
+			<member name="imu" type="nonBasic" nonBasicTypeName="Imu"/>
+			<member name="CameraRGB" type="nonBasic" nonBasicTypeName="Camerargb"/>
+			<member name="Radar" type="nonBasic" nonBasicTypeName="Radar"/>
+			<member name="LiDAR" type="nonBasic" nonBasicTypeName="Lidar"/>
+		</struct>
+	</types>
+</dds>

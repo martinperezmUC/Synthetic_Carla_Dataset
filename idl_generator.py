@@ -5,8 +5,8 @@ Use:
 
 Basic type inferetion and nested structures.
 
-@author: Mario Martín <martinperezm@unican.es>
-@version: 0.2
+@author: Mario Martin-Perez <martinperezm@unican.es>
+@version: 0.3
 """
 import argparse
 import json

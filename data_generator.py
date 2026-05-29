@@ -7,8 +7,8 @@ by CARLA Simulator. Currently supports the generation of data for the following 
 - GNSS receivers
 - Radar
 
-@author: Mario Martín <martinperezm@unican.es>
-@version: 0.4
+@author: Mario Martin-Perez <martinperezm@unican.es>
+@version: 0.5
 """
 
 import json
@@ -381,7 +381,25 @@ def interactive_tune():
 
     return num_frames, precision, filename, sensors, int_digits
 
-def gen_bounded_value(min_val, max_val, int_digits, precision):
+def gen_bounded_value(min_val: float, max_val: float, int_digits: int, precision: int):
+    """
+    Generates a random float within strict physical and formatting boundaries.
+
+    This function calculates the maximum possible value that can fit within the specified number of integer
+    digits. It then clamps the user-provided minimum and maximum values to thesse limits to prevent any string
+    formatting or overflow errors later on. Finally, it draws a random number from a uniform distribution
+    within this safe range.
+
+    Args:
+        min_val (float): The desired physical minimum limit for the sensor value.
+        max_val (float): The desired physical maximum limit for the sensor value.
+        int_digits (int): The maximum number of digits allowed before the decimal point.
+        precision (int): The number of decimal places to round the final result to.
+
+    Returns:
+        float: A randomly generated floating-point number bounded by the digit constraints and rounded to
+            the requested precision.
+    """
     max_integer = 10 ** int_digits - 1
 
     if min_val < 0:
@@ -394,10 +412,30 @@ def gen_bounded_value(min_val, max_val, int_digits, precision):
     value = np.random.uniform(lower, upper)
     return round(float(value), precision)
 
-def generate_synthetic_data(num_frames, precision, filename, enabled_sensors, int_digits):
+def generate_synthetic_data(num_frames: int, precision: int, filename: str, enabled_sensors: set[str],
+                            int_digits: dict[str, int]):
     """
-    Generate synthetic data for the supported sensors. The data is generated based on the 
-    sensor type and the user's input. The generated data is saved in a JSON file.
+    Generates a synthetic dataset of CARLA sensor readings and saves it to a JSON file.
+
+    This function simulates a frame-by-frame pipeline where synthetic measurements for
+    enabled sensors (GNSS, IMU, Camera, Radar and LiDAR) are generated using constrained
+    random uniform distributions. Camera and range sensors simulate metadata pointing to
+    external binary or image payloads. The final structured array is exported as a formatted
+    JSON document.
+
+    Args:
+        num_frames (int): Total number of sequential frames to simulate.
+        precision (int): Decimal precision for all generated floating-point telemetry.
+        filename (str): Path and name of the destination JSON file.
+        enabled_sensors (set[str]): A set containing the keys of active sensors to include in the
+            dataset.
+        int_digits (dict[str, int]): A dictionary mapping sensor fields to their maximum allowable
+            integer digit lengths to prevent layout overflows.
+
+    Returns:
+        None: This function does not return a value. It writes directly to disk.
+    Raises:
+        IOError: If there is an issue creating or writing to the target JSON file.
     """
     print('Starting simulation with: ')
     print(f'--> {num_frames} frames.')
@@ -468,7 +506,10 @@ def generate_synthetic_data(num_frames, precision, filename, enabled_sensors, in
 
     print('Dataset generated.')
 
-if __name__ == "__main__":
+def main():
+    """
+    Execution entry point for the CARLA synthetic dataset generator.
+    """
     args = parse_args()
 
     if args.interactive:
@@ -477,3 +518,6 @@ if __name__ == "__main__":
         num_frames, precision, filename, sensors, int_digits = args_to_settings()
 
     generate_synthetic_data(num_frames, precision, filename, sensors, int_digits)
+
+if __name__ == "__main__":
+    main()
