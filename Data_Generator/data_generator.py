@@ -69,7 +69,7 @@ def parse_args():
     )
     parser.add_argument(
         '--output', '-o',
-        default = 'dataset.json',
+        default = 'Data_Generator/dataset.json',
         help = 'Name of JSON File.'
     )
     parser.add_argument(
@@ -342,7 +342,7 @@ def interactive_tune():
     # Filename
     print('JSON Filename:')
     print('  (.json extension will be added automatically)')
-    filename = ask_str('File:', 'dataset')
+    filename = ask_str('File:', 'Data_Generator/dataset')
     if not filename.endswith('.json'):
         filename += '.json'
     print(f'  [+] Save in: ./{filename}\n')

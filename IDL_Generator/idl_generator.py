@@ -242,9 +242,9 @@ def main():
     5. Serializes the final type registry into IDL syntax and writes it to the output file.
     """
     parser = argparse.ArgumentParser(description = 'Generate IDL for FastDDS based on dataset.json file.')
-    parser.add_argument('--input', '-i', default = 'dataset.json', help = 'Input JSON file.')
+    parser.add_argument('--input', '-i', default = 'Data_Generator/dataset.json', help = 'Input JSON file.')
     parser.add_argument('--module', '-m', default = 'SyntheticData', help = 'IDL Module name.')
-    parser.add_argument('--out', '-o', default = 'dataset.idl', help = 'Output IDL file.')
+    parser.add_argument('--out', '-o', default = 'IDL_Generator/data_types.idl', help = 'Output IDL file.')
     args = parser.parse_args()
 
     with open(args.input, 'r', encoding='utf-8') as f:
