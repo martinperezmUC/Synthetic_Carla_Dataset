@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dds xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+
+    <types>
+
+        <type>
+            <struct name="LatencyType">
+
+                <member name="seqnum" type="uint32"/>
+                <member name="data" type="string" stringMaxLength="255"/>
+
+            </struct>
+        </type>
+
+    </types>
+
+</dds>

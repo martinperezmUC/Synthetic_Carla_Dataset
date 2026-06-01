@@ -19,8 +19,8 @@ module SyntheticData {
 	};
 
 	struct Imu {
-		Accelerometer accelerometer;
-		Gyroscope gyroscope;
+		Accelerometer accel;
+		Gyroscope gyro;
 		double compass;
 	};
 
@@ -44,11 +44,11 @@ module SyntheticData {
 
 	struct Frame {
 		int32 frame;
-		Gnss gnss;
-		Imu imu;
-		Camerargb CameraRGB;
-		Radar Radar;
-		Lidar LiDAR;
+		Gnss gnss_1;
+		Imu imu_1;
+		Camerargb CameraRGB_1;
+		Radar Radar_1;
+		Lidar LiDAR_1;
 	};
 
 };
