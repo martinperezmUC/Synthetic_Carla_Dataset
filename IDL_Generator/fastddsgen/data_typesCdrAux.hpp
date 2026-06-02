@@ -36,7 +36,7 @@ constexpr uint32_t SyntheticData_Gyroscope_max_key_cdr_typesize {0UL};
 constexpr uint32_t SyntheticData_Camerargb_max_cdr_typesize {48UL};
 constexpr uint32_t SyntheticData_Camerargb_max_key_cdr_typesize {0UL};
 
-constexpr uint32_t SyntheticData_Frame_max_cdr_typesize {260UL};
+constexpr uint32_t SyntheticData_Frame_max_cdr_typesize {268UL};
 constexpr uint32_t SyntheticData_Frame_max_key_cdr_typesize {0UL};
 
 constexpr uint32_t SyntheticData_Lidar_max_cdr_typesize {52UL};

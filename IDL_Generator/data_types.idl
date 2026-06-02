@@ -43,6 +43,7 @@ module SyntheticData {
 	};
 
 	struct Frame {
+        unsigned long long id_mensaje;
 		int32 frame;
 		Gnss gnss_1;
 		Imu imu_1;

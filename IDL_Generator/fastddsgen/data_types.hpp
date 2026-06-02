@@ -1511,6 +1511,8 @@ public:
     eProsima_user_DllExport Frame(
             const Frame& x)
     {
+                    m_id_mensaje = x.m_id_mensaje;
+
                     m_frame = x.m_frame;
 
                     m_gnss_1 = x.m_gnss_1;
@@ -1532,6 +1534,7 @@ public:
     eProsima_user_DllExport Frame(
             Frame&& x) noexcept
     {
+        m_id_mensaje = x.m_id_mensaje;
         m_frame = x.m_frame;
         m_gnss_1 = std::move(x.m_gnss_1);
         m_imu_1 = std::move(x.m_imu_1);
@@ -1547,6 +1550,8 @@ public:
     eProsima_user_DllExport Frame& operator =(
             const Frame& x)
     {
+
+                    m_id_mensaje = x.m_id_mensaje;
 
                     m_frame = x.m_frame;
 
@@ -1571,6 +1576,7 @@ public:
             Frame&& x) noexcept
     {
 
+        m_id_mensaje = x.m_id_mensaje;
         m_frame = x.m_frame;
         m_gnss_1 = std::move(x.m_gnss_1);
         m_imu_1 = std::move(x.m_imu_1);
@@ -1587,7 +1593,8 @@ public:
     eProsima_user_DllExport bool operator ==(
             const Frame& x) const
     {
-        return (m_frame == x.m_frame &&
+        return (m_id_mensaje == x.m_id_mensaje &&
+           m_frame == x.m_frame &&
            m_gnss_1 == x.m_gnss_1 &&
            m_imu_1 == x.m_imu_1 &&
            m_CameraRGB_1 == x.m_CameraRGB_1 &&
@@ -1604,6 +1611,35 @@ public:
     {
         return !(*this == x);
     }
+
+    /*!
+     * @brief This function sets a value in member id_mensaje
+     * @param _id_mensaje New value for member id_mensaje
+     */
+    eProsima_user_DllExport void id_mensaje(
+            uint64_t _id_mensaje)
+    {
+        m_id_mensaje = _id_mensaje;
+    }
+
+    /*!
+     * @brief This function returns the value of member id_mensaje
+     * @return Value of member id_mensaje
+     */
+    eProsima_user_DllExport uint64_t id_mensaje() const
+    {
+        return m_id_mensaje;
+    }
+
+    /*!
+     * @brief This function returns a reference to member id_mensaje
+     * @return Reference to member id_mensaje
+     */
+    eProsima_user_DllExport uint64_t& id_mensaje()
+    {
+        return m_id_mensaje;
+    }
+
 
     /*!
      * @brief This function sets a value in member frame
@@ -1832,6 +1868,7 @@ public:
 
 private:
 
+    uint64_t m_id_mensaje{0};
     int32_t m_frame{0};
     Gnss m_gnss_1;
     Imu m_imu_1;

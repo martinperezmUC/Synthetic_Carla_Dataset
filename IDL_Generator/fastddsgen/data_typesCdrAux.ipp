@@ -95,6 +95,13 @@ eProsima_user_DllExport void deserialize(
 {
     using namespace SyntheticData;
 
+        data.latitude({0.0});
+
+        data.longitude({0.0});
+
+        data.altitude({0.0});
+
+
     cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
             eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2 :
             eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR,
@@ -200,6 +207,13 @@ eProsima_user_DllExport void deserialize(
         SyntheticData::Accelerometer& data)
 {
     using namespace SyntheticData;
+
+        data.x({0.0});
+
+        data.y({0.0});
+
+        data.z({0.0});
+
 
     cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
             eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2 :
@@ -307,6 +321,13 @@ eProsima_user_DllExport void deserialize(
 {
     using namespace SyntheticData;
 
+        data.x({0.0});
+
+        data.y({0.0});
+
+        data.z({0.0});
+
+
     cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
             eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2 :
             eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR,
@@ -412,6 +433,9 @@ eProsima_user_DllExport void deserialize(
         SyntheticData::Imu& data)
 {
     using namespace SyntheticData;
+
+        data.compass({0.0});
+
 
     cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
             eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2 :
@@ -532,6 +556,15 @@ eProsima_user_DllExport void deserialize(
 {
     using namespace SyntheticData;
 
+        data.x({0});
+
+        data.y({0});
+
+        data.fov({0});
+
+        data.frameURI({});
+
+
     cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
             eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2 :
             eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR,
@@ -640,6 +673,11 @@ eProsima_user_DllExport void deserialize(
 {
     using namespace SyntheticData;
 
+        data.num_detections({0});
+
+        data.cloudUri({});
+
+
     cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
             eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2 :
             eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR,
@@ -740,6 +778,13 @@ eProsima_user_DllExport void deserialize(
 {
     using namespace SyntheticData;
 
+        data.num_points({0});
+
+        data.horizontal_angle({0});
+
+        data.cloudUri({});
+
+
     cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
             eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2 :
             eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR,
@@ -804,21 +849,24 @@ eProsima_user_DllExport size_t calculate_serialized_size(
 
 
         calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId(0),
-                data.frame(), current_alignment);
+                data.id_mensaje(), current_alignment);
 
         calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId(1),
-                data.gnss_1(), current_alignment);
+                data.frame(), current_alignment);
 
         calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId(2),
-                data.imu_1(), current_alignment);
+                data.gnss_1(), current_alignment);
 
         calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId(3),
-                data.CameraRGB_1(), current_alignment);
+                data.imu_1(), current_alignment);
 
         calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId(4),
-                data.Radar_1(), current_alignment);
+                data.CameraRGB_1(), current_alignment);
 
         calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId(5),
+                data.Radar_1(), current_alignment);
+
+        calculated_size += calculator.calculate_member_serialized_size(eprosima::fastcdr::MemberId(6),
                 data.LiDAR_1(), current_alignment);
 
 
@@ -841,12 +889,13 @@ eProsima_user_DllExport void serialize(
             eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR);
 
     scdr
-        << eprosima::fastcdr::MemberId(0) << data.frame()
-        << eprosima::fastcdr::MemberId(1) << data.gnss_1()
-        << eprosima::fastcdr::MemberId(2) << data.imu_1()
-        << eprosima::fastcdr::MemberId(3) << data.CameraRGB_1()
-        << eprosima::fastcdr::MemberId(4) << data.Radar_1()
-        << eprosima::fastcdr::MemberId(5) << data.LiDAR_1()
+        << eprosima::fastcdr::MemberId(0) << data.id_mensaje()
+        << eprosima::fastcdr::MemberId(1) << data.frame()
+        << eprosima::fastcdr::MemberId(2) << data.gnss_1()
+        << eprosima::fastcdr::MemberId(3) << data.imu_1()
+        << eprosima::fastcdr::MemberId(4) << data.CameraRGB_1()
+        << eprosima::fastcdr::MemberId(5) << data.Radar_1()
+        << eprosima::fastcdr::MemberId(6) << data.LiDAR_1()
 ;
     scdr.end_serialize_type(current_state);
 }
@@ -858,6 +907,16 @@ eProsima_user_DllExport void deserialize(
 {
     using namespace SyntheticData;
 
+        data.id_mensaje({0});
+
+        data.frame({0});
+
+
+
+
+
+
+
     cdr.deserialize_type(eprosima::fastcdr::CdrVersion::XCDRv2 == cdr.get_cdr_version() ?
             eprosima::fastcdr::EncodingAlgorithmFlag::DELIMIT_CDR2 :
             eprosima::fastcdr::EncodingAlgorithmFlag::PLAIN_CDR,
@@ -867,26 +926,30 @@ eProsima_user_DllExport void deserialize(
                 switch (mid.id)
                 {
                                         case 0:
-                                                dcdr >> data.frame();
+                                                dcdr >> data.id_mensaje();
                                             break;
 
                                         case 1:
-                                                dcdr >> data.gnss_1();
+                                                dcdr >> data.frame();
                                             break;
 
                                         case 2:
-                                                dcdr >> data.imu_1();
+                                                dcdr >> data.gnss_1();
                                             break;
 
                                         case 3:
-                                                dcdr >> data.CameraRGB_1();
+                                                dcdr >> data.imu_1();
                                             break;
 
                                         case 4:
-                                                dcdr >> data.Radar_1();
+                                                dcdr >> data.CameraRGB_1();
                                             break;
 
                                         case 5:
+                                                dcdr >> data.Radar_1();
+                                            break;
+
+                                        case 6:
                                                 dcdr >> data.LiDAR_1();
                                             break;
 
@@ -926,6 +989,8 @@ void serialize_key(
 
     static_cast<void>(scdr);
     static_cast<void>(data);
+                        scdr << data.id_mensaje();
+
                         scdr << data.frame();
 
                         serialize_key(scdr, data.gnss_1());

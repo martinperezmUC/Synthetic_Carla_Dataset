@@ -906,6 +906,36 @@ void register_Frame_type_identifier(
         header_Frame = TypeObjectUtils::build_complete_struct_header(TypeIdentifier(), detail_Frame);
         CompleteStructMemberSeq member_seq_Frame;
         {
+            TypeIdentifierPair type_ids_id_mensaje;
+            ReturnCode_t return_code_id_mensaje {eprosima::fastdds::dds::RETCODE_OK};
+            return_code_id_mensaje =
+                eprosima::fastdds::dds::DomainParticipantFactory::get_instance()->type_object_registry().get_type_identifiers(
+                "_uint64_t", type_ids_id_mensaje);
+
+            if (eprosima::fastdds::dds::RETCODE_OK != return_code_id_mensaje)
+            {
+                EPROSIMA_LOG_ERROR(XTYPES_TYPE_REPRESENTATION,
+                        "id_mensaje Structure member TypeIdentifier unknown to TypeObjectRegistry.");
+                return;
+            }
+            StructMemberFlag member_flags_id_mensaje = TypeObjectUtils::build_struct_member_flag(eprosima::fastdds::dds::xtypes::TryConstructFailAction::DISCARD,
+                    false, false, false, false);
+            MemberId member_id_id_mensaje = 0x00000000;
+            bool common_id_mensaje_ec {false};
+            CommonStructMember common_id_mensaje {TypeObjectUtils::build_common_struct_member(member_id_id_mensaje, member_flags_id_mensaje, TypeObjectUtils::retrieve_complete_type_identifier(type_ids_id_mensaje, common_id_mensaje_ec))};
+            if (!common_id_mensaje_ec)
+            {
+                EPROSIMA_LOG_ERROR(XTYPES_TYPE_REPRESENTATION, "Structure id_mensaje member TypeIdentifier inconsistent.");
+                return;
+            }
+            MemberName name_id_mensaje = "id_mensaje";
+            eprosima::fastcdr::optional<AppliedBuiltinMemberAnnotations> member_ann_builtin_id_mensaje;
+            ann_custom_Frame.reset();
+            CompleteMemberDetail detail_id_mensaje = TypeObjectUtils::build_complete_member_detail(name_id_mensaje, member_ann_builtin_id_mensaje, ann_custom_Frame);
+            CompleteStructMember member_id_mensaje = TypeObjectUtils::build_complete_struct_member(common_id_mensaje, detail_id_mensaje);
+            TypeObjectUtils::add_complete_struct_member(member_seq_Frame, member_id_mensaje);
+        }
+        {
             TypeIdentifierPair type_ids_frame;
             ReturnCode_t return_code_frame {eprosima::fastdds::dds::RETCODE_OK};
             return_code_frame =
@@ -920,7 +950,7 @@ void register_Frame_type_identifier(
             }
             StructMemberFlag member_flags_frame = TypeObjectUtils::build_struct_member_flag(eprosima::fastdds::dds::xtypes::TryConstructFailAction::DISCARD,
                     false, false, false, false);
-            MemberId member_id_frame = 0x00000000;
+            MemberId member_id_frame = 0x00000001;
             bool common_frame_ec {false};
             CommonStructMember common_frame {TypeObjectUtils::build_common_struct_member(member_id_frame, member_flags_frame, TypeObjectUtils::retrieve_complete_type_identifier(type_ids_frame, common_frame_ec))};
             if (!common_frame_ec)
@@ -948,7 +978,7 @@ void register_Frame_type_identifier(
             }
             StructMemberFlag member_flags_gnss_1 = TypeObjectUtils::build_struct_member_flag(eprosima::fastdds::dds::xtypes::TryConstructFailAction::DISCARD,
                     false, false, false, false);
-            MemberId member_id_gnss_1 = 0x00000001;
+            MemberId member_id_gnss_1 = 0x00000002;
             bool common_gnss_1_ec {false};
             CommonStructMember common_gnss_1 {TypeObjectUtils::build_common_struct_member(member_id_gnss_1, member_flags_gnss_1, TypeObjectUtils::retrieve_complete_type_identifier(type_ids_gnss_1, common_gnss_1_ec))};
             if (!common_gnss_1_ec)
@@ -976,7 +1006,7 @@ void register_Frame_type_identifier(
             }
             StructMemberFlag member_flags_imu_1 = TypeObjectUtils::build_struct_member_flag(eprosima::fastdds::dds::xtypes::TryConstructFailAction::DISCARD,
                     false, false, false, false);
-            MemberId member_id_imu_1 = 0x00000002;
+            MemberId member_id_imu_1 = 0x00000003;
             bool common_imu_1_ec {false};
             CommonStructMember common_imu_1 {TypeObjectUtils::build_common_struct_member(member_id_imu_1, member_flags_imu_1, TypeObjectUtils::retrieve_complete_type_identifier(type_ids_imu_1, common_imu_1_ec))};
             if (!common_imu_1_ec)
@@ -1004,7 +1034,7 @@ void register_Frame_type_identifier(
             }
             StructMemberFlag member_flags_CameraRGB_1 = TypeObjectUtils::build_struct_member_flag(eprosima::fastdds::dds::xtypes::TryConstructFailAction::DISCARD,
                     false, false, false, false);
-            MemberId member_id_CameraRGB_1 = 0x00000003;
+            MemberId member_id_CameraRGB_1 = 0x00000004;
             bool common_CameraRGB_1_ec {false};
             CommonStructMember common_CameraRGB_1 {TypeObjectUtils::build_common_struct_member(member_id_CameraRGB_1, member_flags_CameraRGB_1, TypeObjectUtils::retrieve_complete_type_identifier(type_ids_CameraRGB_1, common_CameraRGB_1_ec))};
             if (!common_CameraRGB_1_ec)
@@ -1032,7 +1062,7 @@ void register_Frame_type_identifier(
             }
             StructMemberFlag member_flags_Radar_1 = TypeObjectUtils::build_struct_member_flag(eprosima::fastdds::dds::xtypes::TryConstructFailAction::DISCARD,
                     false, false, false, false);
-            MemberId member_id_Radar_1 = 0x00000004;
+            MemberId member_id_Radar_1 = 0x00000005;
             bool common_Radar_1_ec {false};
             CommonStructMember common_Radar_1 {TypeObjectUtils::build_common_struct_member(member_id_Radar_1, member_flags_Radar_1, TypeObjectUtils::retrieve_complete_type_identifier(type_ids_Radar_1, common_Radar_1_ec))};
             if (!common_Radar_1_ec)
@@ -1060,7 +1090,7 @@ void register_Frame_type_identifier(
             }
             StructMemberFlag member_flags_LiDAR_1 = TypeObjectUtils::build_struct_member_flag(eprosima::fastdds::dds::xtypes::TryConstructFailAction::DISCARD,
                     false, false, false, false);
-            MemberId member_id_LiDAR_1 = 0x00000005;
+            MemberId member_id_LiDAR_1 = 0x00000006;
             bool common_LiDAR_1_ec {false};
             CommonStructMember common_LiDAR_1 {TypeObjectUtils::build_common_struct_member(member_id_LiDAR_1, member_flags_LiDAR_1, TypeObjectUtils::retrieve_complete_type_identifier(type_ids_LiDAR_1, common_LiDAR_1_ec))};
             if (!common_LiDAR_1_ec)
