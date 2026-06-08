@@ -1,2 +1,0 @@
-/usr/bin/ar qc libdata_types_lib.a CMakeFiles/data_types_lib.dir/data_typesTypeObjectSupport.cxx.o CMakeFiles/data_types_lib.dir/data_typesPubSubTypes.cxx.o
-/usr/bin/ranlib libdata_types_lib.a

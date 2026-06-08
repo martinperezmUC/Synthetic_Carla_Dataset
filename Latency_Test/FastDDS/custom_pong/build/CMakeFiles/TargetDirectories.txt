@@ -1,4 +1,0 @@
-/home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Latency_Test/FastDDS/custom_pong/build/CMakeFiles/data_types_lib.dir
-/home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Latency_Test/FastDDS/custom_pong/build/CMakeFiles/data_types.dir
-/home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Latency_Test/FastDDS/custom_pong/build/CMakeFiles/edit_cache.dir
-/home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Latency_Test/FastDDS/custom_pong/build/CMakeFiles/rebuild_cache.dir
