@@ -1,8 +1,7 @@
-CMakeFiles/data_types.dir/data_typesSubscriberApp.cxx.o: \
- /home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Throughput_Test/FastDDS/custom/data_typesSubscriberApp.cxx \
+CMakeFiles/throughput.dir/throughputApplication.cxx.o: \
+ /home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Throughput_Test/FastDDS/custom/throughputApplication.cxx \
  /usr/include/stdc-predef.h \
- /home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Throughput_Test/FastDDS/custom/data_typesSubscriberApp.hpp \
- /home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Throughput_Test/FastDDS/custom/data_typesApplication.hpp \
+ /home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Throughput_Test/FastDDS/custom/throughputApplication.hpp \
  /usr/include/c++/14/atomic /usr/include/c++/14/bits/version.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
@@ -158,6 +157,7 @@ CMakeFiles/data_types.dir/data_typesSubscriberApp.cxx.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/14/bits/charconv.h \
  /usr/include/c++/14/bits/basic_string.tcc \
+ /home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Throughput_Test/FastDDS/custom/throughputPublisherApp.hpp \
  /home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Throughput_Test/FastDDS/custom/data_typesPubSubTypes.hpp \
  /usr/include/c++/14/mutex /usr/include/c++/14/bits/chrono.h \
  /usr/include/c++/14/ratio /usr/include/c++/14/cstdint \
@@ -327,11 +327,14 @@ CMakeFiles/data_types.dir/data_typesSubscriberApp.cxx.o: \
  /home/ctrpc37/Fast-DDS-python/install/include/fastcdr/CdrSizeCalculator.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/utils/md5.hpp \
  /home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Throughput_Test/FastDDS/custom/data_types.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/DataReaderListener.hpp \
+ /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/publisher/DataWriterListener.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/BaseStatus.hpp \
+ /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/PublicationMatchedStatus.hpp \
+ /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/MatchedStatus.hpp \
+ /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/common/InstanceHandle.hpp \
+ /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/IncompatibleQosStatus.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/DeadlineMissedStatus.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/topic/TypeSupport.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/common/InstanceHandle.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/ReturnCode.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/detail/DDSReturnCode.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/detail/DDSSecurityReturnCode.hpp \
@@ -345,75 +348,9 @@ CMakeFiles/data_types.dir/data_typesSubscriberApp.cxx.o: \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/type_representation/detail/dds_xtypes_typeobjectCdrAux.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/type_representation/detail/dds_xtypes_typeobject.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/type_representation/detail/dds_xtypes_typeobjectPubSubTypes.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/IncompatibleQosStatus.hpp \
+ /usr/include/c++/14/condition_variable \
+ /home/ctrpc37/Escritorio/Herramienta_Datos_Sinteticos/synthetic_carla_tool/Throughput_Test/FastDDS/custom/throughputSubscriberApp.hpp \
+ /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/DataReaderListener.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/LivelinessChangedStatus.hpp \
  /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/SampleRejectedStatus.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/SubscriptionMatchedStatus.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/MatchedStatus.hpp \
- /usr/include/c++/14/condition_variable \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/domain/DomainParticipantFactory.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/StatusMask.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/domain/qos/DomainParticipantExtendedQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/domain/qos/DomainParticipantQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/domain/qos/DomainParticipantFactoryQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/domain/qos/DomainParticipantQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/dynamic_types/DynamicType.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/dynamic_types/AnnotationDescriptor.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/dynamic_types/DynamicTypeMember.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/dynamic_types/MemberDescriptor.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/dynamic_types/VerbatimTextDescriptor.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/dynamic_types/TypeDescriptor.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/dynamic_types/DynamicTypeBuilder.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/xtypes/type_representation/ITypeObjectRegistry.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/LibrarySettings.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/domain/DomainParticipant.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/builtin/topic/ParticipantBuiltinTopicData.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/rtps/builtin/data/ParticipantBuiltinTopicData.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/rtps/builtin/data/BuiltinTopicKey.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/rtps/common/RemoteLocators.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/builtin/topic/TopicBuiltinTopicData.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/builtin/topic/BuiltinTopicKey.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/Entity.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/condition/StatusCondition.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/condition/Condition.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/domain/qos/ReplierQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/publisher/qos/DataWriterQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/policy/RTPSReliableWriterQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/rtps/attributes/WriterAttributes.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/rtps/attributes/EndpointAttributes.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/policy/WriterDataLifecycleQosPolicy.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/publisher/qos/PublisherQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/publisher/qos/WriterQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/topic/qos/TopicQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/qos/DataReaderQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/policy/ReaderDataLifecycleQosPolicy.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/policy/ReaderResourceLimitsQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/policy/RTPSReliableReaderQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/rtps/attributes/ReaderAttributes.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/qos/ReaderQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/qos/SubscriberQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/domain/qos/RequesterQos.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/rpc/ServiceTypeSupport.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/topic/ContentFilteredTopic.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/topic/TopicDescription.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/topic/Topic.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/topic/IContentFilterFactory.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/LoanableTypedCollection.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/LoanableCollection.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/topic/IContentFilter.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/rtps/common/WriteParams.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/topic/TopicListener.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/Subscriber.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/InstanceState.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/SampleState.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/ViewState.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/DataReader.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/builtin/topic/PublicationBuiltinTopicData.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/rtps/builtin/data/PublicationBuiltinTopicData.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/builtin/topic/SubscriptionBuiltinTopicData.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/rtps/builtin/data/SubscriptionBuiltinTopicData.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/LoanableSequence.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/ReadCondition.hpp \
- /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/subscriber/SampleInfo.hpp \
- /usr/include/c++/14/thread /usr/include/c++/14/bits/std_thread.h \
- /usr/include/c++/14/bits/this_thread_sleep.h
+ /home/ctrpc37/Fast-DDS-python/install/include/fastdds/dds/core/status/SubscriptionMatchedStatus.hpp

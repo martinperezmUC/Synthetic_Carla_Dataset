@@ -1,7 +1,7 @@
 #ifndef DATA_TYPES_PUBLISHER_APP_HPP
 #define DATA_TYPES_PUBLISHER_APP_HPP
 
-#include "data_typesApplication.hpp"
+#include "throughputApplication.hpp"
 #include "data_typesPubSubTypes.hpp"
 
 #include <fastdds/dds/publisher/DataWriterListener.hpp>
@@ -25,12 +25,12 @@ namespace dds {
 }
 }
 
-class data_typesPublisherApp : public data_typesApplication,
+class throughputPublisherApp : public throughputApplication,
                                public eprosima::fastdds::dds::DataWriterListener
 {
 public:
-    data_typesPublisherApp(const int& domain_id);
-    ~data_typesPublisherApp();
+    throughputPublisherApp(const int& domain_id);
+    ~throughputPublisherApp();
 
     void on_publication_matched(eprosima::fastdds::dds::DataWriter* writer, const eprosima::fastdds::dds::PublicationMatchedStatus& info) override;
 

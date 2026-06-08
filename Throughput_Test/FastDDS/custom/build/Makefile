@@ -130,41 +130,17 @@ data_types_lib/fast:
 .PHONY : data_types_lib/fast
 
 #=============================================================================
-# Target rules for targets named data_types
+# Target rules for targets named throughput
 
 # Build rule for target.
-data_types: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 data_types
-.PHONY : data_types
+throughput: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 throughput
+.PHONY : throughput
 
 # fast build rule for target.
-data_types/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/build
-.PHONY : data_types/fast
-
-data_typesApplication.o: data_typesApplication.cxx.o
-.PHONY : data_typesApplication.o
-
-# target to build an object file
-data_typesApplication.cxx.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesApplication.cxx.o
-.PHONY : data_typesApplication.cxx.o
-
-data_typesApplication.i: data_typesApplication.cxx.i
-.PHONY : data_typesApplication.i
-
-# target to preprocess a source file
-data_typesApplication.cxx.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesApplication.cxx.i
-.PHONY : data_typesApplication.cxx.i
-
-data_typesApplication.s: data_typesApplication.cxx.s
-.PHONY : data_typesApplication.s
-
-# target to generate assembly for a file
-data_typesApplication.cxx.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesApplication.cxx.s
-.PHONY : data_typesApplication.cxx.s
+throughput/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/build
+.PHONY : throughput/fast
 
 data_typesPubSubTypes.o: data_typesPubSubTypes.cxx.o
 .PHONY : data_typesPubSubTypes.o
@@ -190,54 +166,6 @@ data_typesPubSubTypes.cxx.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types_lib.dir/build.make CMakeFiles/data_types_lib.dir/data_typesPubSubTypes.cxx.s
 .PHONY : data_typesPubSubTypes.cxx.s
 
-data_typesPublisherApp.o: data_typesPublisherApp.cxx.o
-.PHONY : data_typesPublisherApp.o
-
-# target to build an object file
-data_typesPublisherApp.cxx.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesPublisherApp.cxx.o
-.PHONY : data_typesPublisherApp.cxx.o
-
-data_typesPublisherApp.i: data_typesPublisherApp.cxx.i
-.PHONY : data_typesPublisherApp.i
-
-# target to preprocess a source file
-data_typesPublisherApp.cxx.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesPublisherApp.cxx.i
-.PHONY : data_typesPublisherApp.cxx.i
-
-data_typesPublisherApp.s: data_typesPublisherApp.cxx.s
-.PHONY : data_typesPublisherApp.s
-
-# target to generate assembly for a file
-data_typesPublisherApp.cxx.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesPublisherApp.cxx.s
-.PHONY : data_typesPublisherApp.cxx.s
-
-data_typesSubscriberApp.o: data_typesSubscriberApp.cxx.o
-.PHONY : data_typesSubscriberApp.o
-
-# target to build an object file
-data_typesSubscriberApp.cxx.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesSubscriberApp.cxx.o
-.PHONY : data_typesSubscriberApp.cxx.o
-
-data_typesSubscriberApp.i: data_typesSubscriberApp.cxx.i
-.PHONY : data_typesSubscriberApp.i
-
-# target to preprocess a source file
-data_typesSubscriberApp.cxx.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesSubscriberApp.cxx.i
-.PHONY : data_typesSubscriberApp.cxx.i
-
-data_typesSubscriberApp.s: data_typesSubscriberApp.cxx.s
-.PHONY : data_typesSubscriberApp.s
-
-# target to generate assembly for a file
-data_typesSubscriberApp.cxx.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesSubscriberApp.cxx.s
-.PHONY : data_typesSubscriberApp.cxx.s
-
 data_typesTypeObjectSupport.o: data_typesTypeObjectSupport.cxx.o
 .PHONY : data_typesTypeObjectSupport.o
 
@@ -262,29 +190,101 @@ data_typesTypeObjectSupport.cxx.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types_lib.dir/build.make CMakeFiles/data_types_lib.dir/data_typesTypeObjectSupport.cxx.s
 .PHONY : data_typesTypeObjectSupport.cxx.s
 
-data_typesmain.o: data_typesmain.cxx.o
-.PHONY : data_typesmain.o
+throughputApplication.o: throughputApplication.cxx.o
+.PHONY : throughputApplication.o
 
 # target to build an object file
-data_typesmain.cxx.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesmain.cxx.o
-.PHONY : data_typesmain.cxx.o
+throughputApplication.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputApplication.cxx.o
+.PHONY : throughputApplication.cxx.o
 
-data_typesmain.i: data_typesmain.cxx.i
-.PHONY : data_typesmain.i
+throughputApplication.i: throughputApplication.cxx.i
+.PHONY : throughputApplication.i
 
 # target to preprocess a source file
-data_typesmain.cxx.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesmain.cxx.i
-.PHONY : data_typesmain.cxx.i
+throughputApplication.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputApplication.cxx.i
+.PHONY : throughputApplication.cxx.i
 
-data_typesmain.s: data_typesmain.cxx.s
-.PHONY : data_typesmain.s
+throughputApplication.s: throughputApplication.cxx.s
+.PHONY : throughputApplication.s
 
 # target to generate assembly for a file
-data_typesmain.cxx.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_types.dir/build.make CMakeFiles/data_types.dir/data_typesmain.cxx.s
-.PHONY : data_typesmain.cxx.s
+throughputApplication.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputApplication.cxx.s
+.PHONY : throughputApplication.cxx.s
+
+throughputPublisherApp.o: throughputPublisherApp.cxx.o
+.PHONY : throughputPublisherApp.o
+
+# target to build an object file
+throughputPublisherApp.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputPublisherApp.cxx.o
+.PHONY : throughputPublisherApp.cxx.o
+
+throughputPublisherApp.i: throughputPublisherApp.cxx.i
+.PHONY : throughputPublisherApp.i
+
+# target to preprocess a source file
+throughputPublisherApp.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputPublisherApp.cxx.i
+.PHONY : throughputPublisherApp.cxx.i
+
+throughputPublisherApp.s: throughputPublisherApp.cxx.s
+.PHONY : throughputPublisherApp.s
+
+# target to generate assembly for a file
+throughputPublisherApp.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputPublisherApp.cxx.s
+.PHONY : throughputPublisherApp.cxx.s
+
+throughputSubscriberApp.o: throughputSubscriberApp.cxx.o
+.PHONY : throughputSubscriberApp.o
+
+# target to build an object file
+throughputSubscriberApp.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputSubscriberApp.cxx.o
+.PHONY : throughputSubscriberApp.cxx.o
+
+throughputSubscriberApp.i: throughputSubscriberApp.cxx.i
+.PHONY : throughputSubscriberApp.i
+
+# target to preprocess a source file
+throughputSubscriberApp.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputSubscriberApp.cxx.i
+.PHONY : throughputSubscriberApp.cxx.i
+
+throughputSubscriberApp.s: throughputSubscriberApp.cxx.s
+.PHONY : throughputSubscriberApp.s
+
+# target to generate assembly for a file
+throughputSubscriberApp.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputSubscriberApp.cxx.s
+.PHONY : throughputSubscriberApp.cxx.s
+
+throughputmain.o: throughputmain.cxx.o
+.PHONY : throughputmain.o
+
+# target to build an object file
+throughputmain.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputmain.cxx.o
+.PHONY : throughputmain.cxx.o
+
+throughputmain.i: throughputmain.cxx.i
+.PHONY : throughputmain.i
+
+# target to preprocess a source file
+throughputmain.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputmain.cxx.i
+.PHONY : throughputmain.cxx.i
+
+throughputmain.s: throughputmain.cxx.s
+.PHONY : throughputmain.s
+
+# target to generate assembly for a file
+throughputmain.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/throughput.dir/build.make CMakeFiles/throughput.dir/throughputmain.cxx.s
+.PHONY : throughputmain.cxx.s
 
 # Help Target
 help:
@@ -294,26 +294,26 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... data_types"
 	@echo "... data_types_lib"
-	@echo "... data_typesApplication.o"
-	@echo "... data_typesApplication.i"
-	@echo "... data_typesApplication.s"
+	@echo "... throughput"
 	@echo "... data_typesPubSubTypes.o"
 	@echo "... data_typesPubSubTypes.i"
 	@echo "... data_typesPubSubTypes.s"
-	@echo "... data_typesPublisherApp.o"
-	@echo "... data_typesPublisherApp.i"
-	@echo "... data_typesPublisherApp.s"
-	@echo "... data_typesSubscriberApp.o"
-	@echo "... data_typesSubscriberApp.i"
-	@echo "... data_typesSubscriberApp.s"
 	@echo "... data_typesTypeObjectSupport.o"
 	@echo "... data_typesTypeObjectSupport.i"
 	@echo "... data_typesTypeObjectSupport.s"
-	@echo "... data_typesmain.o"
-	@echo "... data_typesmain.i"
-	@echo "... data_typesmain.s"
+	@echo "... throughputApplication.o"
+	@echo "... throughputApplication.i"
+	@echo "... throughputApplication.s"
+	@echo "... throughputPublisherApp.o"
+	@echo "... throughputPublisherApp.i"
+	@echo "... throughputPublisherApp.s"
+	@echo "... throughputSubscriberApp.o"
+	@echo "... throughputSubscriberApp.i"
+	@echo "... throughputSubscriberApp.s"
+	@echo "... throughputmain.o"
+	@echo "... throughputmain.i"
+	@echo "... throughputmain.s"
 .PHONY : help
 
 

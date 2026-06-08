@@ -34,14 +34,14 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 
-message(STATUS "Configuring data_types...")
+message(STATUS "Configuring throughput...")
 add_library(data_types_lib data_typesTypeObjectSupport.cxx data_typesPubSubTypes.cxx)
 target_compile_definitions(data_types_lib PRIVATE $<$<BOOL:${BUILD_SHARED_LIBS}>:EPROSIMA_USER_DLL_EXPORT>)
 target_link_libraries(data_types_lib fastcdr fastdds)
 
-add_executable(data_types data_typesApplication.cxx data_typesPublisherApp.cxx data_typesSubscriberApp.cxx data_typesmain.cxx)
-target_link_libraries(data_types fastcdr fastdds
+add_executable(throughput throughputApplication.cxx throughputPublisherApp.cxx throughputSubscriberApp.cxx throughputmain.cxx)
+target_link_libraries(throughput fastcdr fastdds
         data_types_lib 
         )
 
-set_target_properties(data_types PROPERTIES OUTPUT_NAME "Throughput_Test")
+set_target_properties(throughput PROPERTIES OUTPUT_NAME "Throughput_Test")

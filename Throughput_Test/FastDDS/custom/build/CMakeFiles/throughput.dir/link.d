@@ -2,10 +2,10 @@ Throughput_Test: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/Scrt1.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
-  CMakeFiles/data_types.dir/data_typesApplication.cxx.o \
-  CMakeFiles/data_types.dir/data_typesPublisherApp.cxx.o \
-  CMakeFiles/data_types.dir/data_typesSubscriberApp.cxx.o \
-  CMakeFiles/data_types.dir/data_typesmain.cxx.o \
+  CMakeFiles/throughput.dir/throughputApplication.cxx.o \
+  CMakeFiles/throughput.dir/throughputPublisherApp.cxx.o \
+  CMakeFiles/throughput.dir/throughputSubscriberApp.cxx.o \
+  CMakeFiles/throughput.dir/throughputmain.cxx.o \
   /home/ctrpc37/Fast-DDS-python/install/lib/libfastcdr.a \
   /home/ctrpc37/Fast-DDS-python/install/lib/libfastdds.a \
   libdata_types_lib.a \
@@ -59,13 +59,13 @@ Throughput_Test: \
 
 /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o:
 
-CMakeFiles/data_types.dir/data_typesApplication.cxx.o:
+CMakeFiles/throughput.dir/throughputApplication.cxx.o:
 
-CMakeFiles/data_types.dir/data_typesPublisherApp.cxx.o:
+CMakeFiles/throughput.dir/throughputPublisherApp.cxx.o:
 
-CMakeFiles/data_types.dir/data_typesSubscriberApp.cxx.o:
+CMakeFiles/throughput.dir/throughputSubscriberApp.cxx.o:
 
-CMakeFiles/data_types.dir/data_typesmain.cxx.o:
+CMakeFiles/throughput.dir/throughputmain.cxx.o:
 
 /home/ctrpc37/Fast-DDS-python/install/lib/libfastcdr.a:
 

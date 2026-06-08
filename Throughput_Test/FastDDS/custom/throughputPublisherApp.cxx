@@ -1,4 +1,4 @@
-#include "data_typesPublisherApp.hpp"
+#include "throughputPublisherApp.hpp"
 
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
 #include <fastdds/dds/domain/DomainParticipant.hpp>
@@ -15,7 +15,7 @@
 
 using namespace eprosima::fastdds::dds;
 
-data_typesPublisherApp::data_typesPublisherApp(const int& domain_id)
+throughputPublisherApp::throughputPublisherApp(const int& domain_id)
     : factory_(nullptr), participant_(nullptr), publisher_(nullptr)
     , topic_(nullptr), writer_(nullptr)
     , type_(new SyntheticData::FramePubSubType()), stop_(false), matched_(0)
@@ -40,17 +40,17 @@ data_typesPublisherApp::data_typesPublisherApp(const int& domain_id)
     writer_ = publisher_->create_datawriter(topic_, wqos, this);
 }
 
-data_typesPublisherApp::~data_typesPublisherApp() {
+throughputPublisherApp::~throughputPublisherApp() {
     if (participant_) { participant_->delete_contained_entities(); factory_->delete_participant(participant_); }
 }
 
-void data_typesPublisherApp::on_publication_matched(DataWriter*, const PublicationMatchedStatus& info) {
+void throughputPublisherApp::on_publication_matched(DataWriter*, const PublicationMatchedStatus& info) {
     std::lock_guard<std::mutex> lock(match_mutex_);
     matched_ = info.current_count;
     match_cv_.notify_one();
 }
 
-void data_typesPublisherApp::run() {
+void throughputPublisherApp::run() {
     std::cout << "[Vehicle] Waiting to connect with Edge Node..." << std::endl;
     std::unique_lock<std::mutex> lock(match_mutex_);
     match_cv_.wait(lock, [this]() { return (matched_ > 0) || is_stopped(); });
@@ -84,5 +84,5 @@ void data_typesPublisherApp::run() {
     }
 }
 
-bool data_typesPublisherApp::is_stopped() { return stop_.load(); }
-void data_typesPublisherApp::stop() { stop_.store(true); match_cv_.notify_all(); }
+bool throughputPublisherApp::is_stopped() { return stop_.load(); }
+void throughputPublisherApp::stop() { stop_.store(true); match_cv_.notify_all(); }

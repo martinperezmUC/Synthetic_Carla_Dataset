@@ -1,2 +1,2 @@
-# Empty dependencies file for data_types.
+# Empty dependencies file for throughput.
 # This may be replaced when dependencies are built.

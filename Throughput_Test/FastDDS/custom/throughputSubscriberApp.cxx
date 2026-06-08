@@ -1,4 +1,4 @@
-#include "data_typesSubscriberApp.hpp"
+#include "throughputSubscriberApp.hpp"
 
 #include <fastdds/dds/domain/DomainParticipantFactory.hpp>
 #include <fastdds/dds/domain/DomainParticipant.hpp>
@@ -16,7 +16,7 @@
 
 using namespace eprosima::fastdds::dds;
 
-data_typesSubscriberApp::data_typesSubscriberApp(const int& domain_id)
+throughputSubscriberApp::throughputSubscriberApp(const int& domain_id)
     : factory_(nullptr), participant_(nullptr), subscriber_(nullptr)
     , topic_(nullptr), reader_(nullptr)
     , type_(new SyntheticData::FramePubSubType()), stop_(false)
@@ -36,11 +36,11 @@ data_typesSubscriberApp::data_typesSubscriberApp(const int& domain_id)
     reader_ = subscriber_->create_datareader(topic_, rqos, this);
 }
 
-data_typesSubscriberApp::~data_typesSubscriberApp() {
+throughputSubscriberApp::~throughputSubscriberApp() {
     if (participant_) { participant_->delete_contained_entities(); factory_->delete_participant(participant_); }
 }
 
-void data_typesSubscriberApp::on_subscription_matched(DataReader*, const SubscriptionMatchedStatus& info) {
+void throughputSubscriberApp::on_subscription_matched(DataReader*, const SubscriptionMatchedStatus& info) {
     if (info.current_count_change == 1) {
         std::cout << "[Edge Node] New vehicle connected. Total number: " << info.current_count << std::endl;
     } else if (info.current_count_change == -1) {
@@ -48,7 +48,7 @@ void data_typesSubscriberApp::on_subscription_matched(DataReader*, const Subscri
     }
 }
 
-void data_typesSubscriberApp::on_data_available(DataReader* reader) {
+void throughputSubscriberApp::on_data_available(DataReader* reader) {
     SyntheticData::Frame sample;
     SampleInfo info;
     while (!is_stopped() && (RETCODE_OK == reader->take_next_sample(&sample, &info))) {
@@ -65,7 +65,7 @@ void data_typesSubscriberApp::on_data_available(DataReader* reader) {
     }
 }
 
-void data_typesSubscriberApp::run() {
+void throughputSubscriberApp::run() {
     std::cout << "--- Started edge node. Monitoring Throughput ---" << std::endl;
     
     while (!is_stopped()) {
@@ -96,5 +96,5 @@ void data_typesSubscriberApp::run() {
     }
 }
 
-bool data_typesSubscriberApp::is_stopped() { return stop_.load(); }
-void data_typesSubscriberApp::stop() { stop_.store(true); terminate_cv_.notify_all(); }
+bool throughputSubscriberApp::is_stopped() { return stop_.load(); }
+void throughputSubscriberApp::stop() { stop_.store(true); terminate_cv_.notify_all(); }

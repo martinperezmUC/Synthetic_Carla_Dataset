@@ -1,7 +1,7 @@
 #ifndef DATA_TYPES_SUBSCRIBER_APP_HPP
 #define DATA_TYPES_SUBSCRIBER_APP_HPP
 
-#include "data_typesApplication.hpp"
+#include "throughputApplication.hpp"
 #include "data_typesPubSubTypes.hpp"
 
 #include <fastdds/dds/subscriber/DataReaderListener.hpp>
@@ -25,12 +25,12 @@ namespace dds {
 }
 }
 
-class data_typesSubscriberApp : public data_typesApplication,
+class throughputSubscriberApp : public throughputApplication,
                                 public eprosima::fastdds::dds::DataReaderListener
 {
 public:
-    data_typesSubscriberApp(const int& domain_id);
-    ~data_typesSubscriberApp();
+    throughputSubscriberApp(const int& domain_id);
+    ~throughputSubscriberApp();
 
     void on_subscription_matched(eprosima::fastdds::dds::DataReader* reader, const eprosima::fastdds::dds::SubscriptionMatchedStatus& info) override;
     void on_data_available(eprosima::fastdds::dds::DataReader* reader) override;
