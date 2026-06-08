@@ -375,7 +375,7 @@ def interactive_tune():
     print(f'  [+] Frames:    {num_frames} frames')
     print(f'  [+] Precision: {precision} decimals')
     print(f'  [+] Filename:  {filename}')
-    print(f'  [+] Sensors:   {', '.join(sorted(sensors))}')
+    print(f'  [+] Sensors:   {", ".join(sorted(sensors))}')
     print(f'  [+] Digits:    lat={lat_int}, long={lon_int}, alt={alt_int}, compass={compass_int}, accel={accel_int}, gyro={gyro_int}')
     print('=' * 30)
 
@@ -441,7 +441,7 @@ def generate_synthetic_data(num_frames: int, precision: int, filename: str, enab
     print(f'--> {num_frames} frames.')
     print(f'--> {precision} decimals.')
     print(f'--> Exporting to: {filename}')
-    print(f'--> Sensors: {', '.join(sorted(enabled_sensors))}')
+    print(f'--> Sensors: {", ".join(sorted(enabled_sensors))}')
     print(f'--> Integer digits: {int_digits}')
     print('-' * 40 + '\n')
 
