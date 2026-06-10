@@ -9,13 +9,9 @@ install_tools() {
 
     echo "[+] Installing tools..."
 
-    echo "\t[-] Installing ssh-pass..."
-    sudo apt update
-    sudo apt install -y sshpass
-
     echo "\t[-] Creating workspace directories..."
-    sshpass -p $PASS ssh -p $PORT $USER@$node "mkdir -p $WORKSPACE_DIR/Latency_Test"
-    sshpass -p $PASS ssh -p $PORT $USER@$node "mkdir -p $WORKSPACE_DIR/Throughput_Test"
+    sshpass -p $PASS ssh $SSH_OPTS -p $PORT $USER@$node "mkdir -p $WORKSPACE_DIR/Latency_Test"
+    sshpass -p $PASS ssh $SSH_OPTS -p $PORT $USER@$node "mkdir -p $WORKSPACE_DIR/Throughput_Test"
 
     echo "\t[-] Copying executables..."
     sshpass -p $PASS scp -P $PORT ./Latency_Test $USER@$node:$WORKSPACE_DIR/Latency_Test/

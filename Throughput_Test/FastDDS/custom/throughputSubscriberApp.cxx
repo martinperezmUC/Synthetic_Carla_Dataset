@@ -14,6 +14,11 @@
 #include <thread>
 #include <iomanip>
 
+#include <vector>
+#include <numeric>
+#include <cmath>
+#include <algorithm>
+
 using namespace eprosima::fastdds::dds;
 
 throughputSubscriberApp::throughputSubscriberApp(const int& domain_id)
@@ -43,8 +48,14 @@ throughputSubscriberApp::~throughputSubscriberApp() {
 void throughputSubscriberApp::on_subscription_matched(DataReader*, const SubscriptionMatchedStatus& info) {
     if (info.current_count_change == 1) {
         std::cout << "[Edge Node] New vehicle connected. Total number: " << info.current_count << std::endl;
+        has_matched_.store(true, std::memory_order_relaxed);
     } else if (info.current_count_change == -1) {
         std::cout << "[Edge Node] Vehicle disconnected. Total number: " << info.current_count << std::endl;
+
+        if (has_matched_.load(std::memory_order_relaxed) && info.current_count == 0) {
+            std::cout << "[Edge Node] All vehicles disconnected." << std::endl;
+            stop();
+        }
     }
 }
 
@@ -68,6 +79,9 @@ void throughputSubscriberApp::on_data_available(DataReader* reader) {
 void throughputSubscriberApp::run() {
     std::cout << "--- Started edge node. Monitoring Throughput ---" << std::endl;
     
+    std::vector<double> msg_history;
+    std::vector<double> mbps_history;
+
     while (!is_stopped()) {
         // Take a "snapshot" of the atomic counters at t=0
         uint64_t msgs_before = samples_received_.load(std::memory_order_relaxed);
@@ -92,7 +106,62 @@ void throughputSubscriberApp::run() {
                       << std::fixed << std::setprecision(2) 
                       << mbps << " Mbps | " 
                       << MBps << " MB/s " << std::endl;
+
+            msg_history.push_back(msgs_per_sec);
+            mbps_history.push_back(mbps);
         }
+    }
+
+    if (!mbps_history.empty()) {
+        // Sort vectors to calculate min, max, and percentiles
+        std::sort(msg_history.begin(), msg_history.end());
+        std::sort(mbps_history.begin(), mbps_history.end());
+
+        // Message Rate (msg/s)
+        size_t msg_samples = msg_history.size();
+        double msg_sum = std::accumulate(msg_history.begin(), msg_history.end(), 0.0);
+        double msg_mean = msg_sum / msg_samples;
+        
+        double msg_variance = 0.0;
+        for (double m : msg_history) msg_variance += (m - msg_mean) * (m - msg_mean);
+        double msg_stdev = std::sqrt(msg_variance / msg_samples);
+
+        // Bandwidth (Mbps)
+        size_t mbps_samples = mbps_history.size();
+        double mbps_sum = std::accumulate(mbps_history.begin(), mbps_history.end(), 0.0);
+        double mbps_mean = mbps_sum / mbps_samples;
+        
+        double mbps_variance = 0.0;
+        for (double b : mbps_history) mbps_variance += (b - mbps_mean) * (b - mbps_mean);
+        double mbps_stdev = std::sqrt(mbps_variance / mbps_samples);
+
+        // --- PRINT MESSAGE RATE ---
+        std::cout << "\n--- RESULTS (Throughput - Message Rate in msg/s) ---" << std::endl;
+        std::cout << std::fixed << std::setprecision(2);
+        std::cout << "Samples : " << msg_samples << std::endl;
+        std::cout << "Mean    : " << msg_mean << " msg/s" << std::endl;
+        std::cout << "StDev   : " << msg_stdev << " msg/s" << std::endl;
+        std::cout << "Min     : " << msg_history.front() << " msg/s" << std::endl;
+        std::cout << "50%     : " << msg_history[msg_samples * 0.50] << " msg/s" << std::endl;
+        std::cout << "90%     : " << msg_history[msg_samples * 0.90] << " msg/s" << std::endl;
+        std::cout << "99%     : " << msg_history[msg_samples * 0.99] << " msg/s" << std::endl;
+        std::cout << "99.99%  : " << msg_history[msg_samples * 0.9999] << " msg/s" << std::endl;
+        std::cout << "Max     : " << msg_history.back() << " msg/s" << std::endl;
+
+        // --- PRINT BANDWIDTH ---
+        std::cout << "\n--- RESULTS (Throughput - Bandwidth in Mbps) ---" << std::endl;
+        std::cout << std::fixed << std::setprecision(2);
+        std::cout << "Samples : " << mbps_samples << std::endl;
+        std::cout << "Mean    : " << mbps_mean << " Mbps" << std::endl;
+        std::cout << "StDev   : " << mbps_stdev << " Mbps" << std::endl;
+        std::cout << "Min     : " << mbps_history.front() << " Mbps" << std::endl;
+        std::cout << "50%     : " << mbps_history[mbps_samples * 0.50] << " Mbps" << std::endl;
+        std::cout << "90%     : " << mbps_history[mbps_samples * 0.90] << " Mbps" << std::endl;
+        std::cout << "99%     : " << mbps_history[mbps_samples * 0.99] << " Mbps" << std::endl;
+        std::cout << "99.99%  : " << mbps_history[mbps_samples * 0.9999] << " Mbps" << std::endl;
+        std::cout << "Max     : " << mbps_history.back() << " Mbps" << std::endl;
+    } else {
+        std::cout << "\n[-] No data available to calculate throughput statistics." << std::endl;
     }
 }
 

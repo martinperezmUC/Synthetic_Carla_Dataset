@@ -47,6 +47,7 @@ private:
     eprosima::fastdds::dds::TypeSupport type_;
 
     std::atomic<bool> stop_;
+    std::atomic<bool> has_matched_{false};
     std::mutex terminate_cv_mtx_;
     std::condition_variable terminate_cv_;
     
