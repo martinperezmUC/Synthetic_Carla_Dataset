@@ -1,8 +1,6 @@
 #!/bin/bash
 source common.sh
 
-WORKSPACE_DIR="/home/$USER/performance_tests"
-
 set -o errexit
 exec 3< nodes_dds.txt
 
