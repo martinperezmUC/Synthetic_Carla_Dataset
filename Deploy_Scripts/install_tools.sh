@@ -10,7 +10,8 @@ install_tools() {
     echo "[+] Installing tools..."
 
     echo "\t[-] Installing ssh-pass..."
-    sudo apt update && sudo apt install -y sshpass
+    sudo apt update
+    sudo apt install -y sshpass
 
     echo "\t[-] Creating workspace directories..."
     sshpass -p $PASS ssh -p $PORT $USER@$node "mkdir -p $WORKSPACE_DIR/Latency_Test"
