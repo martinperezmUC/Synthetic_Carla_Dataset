@@ -1,5 +1,5 @@
 #!/bin/bash
-source common.sh
+source ./common.sh
 
 set -o errexit
 exec 3< nodes_dds.txt
@@ -7,7 +7,10 @@ exec 3< nodes_dds.txt
 install_tools() {
     local node=$1
 
-    echo "[+] Installing tools on $USER:$node..."
+    echo "[+] Installing tools..."
+
+    echo "\t[-] Installing ssh-pass..."
+    sudo apt update && sudo apt install -y sshpass
 
     echo "\t[-] Creating workspace directories..."
     sshpass -p $PASS ssh -p $PORT $USER@$node "mkdir -p $WORKSPACE_DIR/Latency_Test"
