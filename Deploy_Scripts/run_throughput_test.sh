@@ -5,7 +5,7 @@ LOG_FILE="throughput_log_$(date +%Y%m%d_%H%M%S).txt"
 
 mapfile -t nodes < nodes_dds.txt
 
-if [ ${#nodes[@]} -lt ]; then
+if [ ${#nodes[@]} -lt 2 ]; then
     echo "[!] Error: 2 or more nodes are needed on nodes_dds.txt".
     exit 1
 fi 
