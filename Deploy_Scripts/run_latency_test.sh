@@ -17,7 +17,7 @@ SUB_NODES=("${nodes[@]:1}")
 
 echo "[+] Starting subscribers (pong)..."
 for node in "${SUB_NODES[@]}"; do
-    sshpass -p "$PASS" ssh $SSH_OPTS -p "$PORT" "$USER@$node" \
+    sshpass -p "$PASS" ssh -f $SSH_OPTS -p "$PORT" "$USER@$node" \
         "cd $WORKSPACE_DIR/Latency_Test && nohup ./Latency_Test subscriber > /dev/null 2>&1 &"
 done
 
