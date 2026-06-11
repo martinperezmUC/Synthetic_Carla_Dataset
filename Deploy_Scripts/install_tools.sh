@@ -7,7 +7,7 @@ exec 3< nodes_dds.txt
 install_tools() {
     local node=$1
 
-    echo "[+] Installing tools..."
+    echo "[+] Installing tools on $node..."
 
     echo "  [-] Creating workspace directories..."
     sshpass -p $PASS ssh $SSH_OPTS -p $PORT $USER@$node "mkdir -p $WORKSPACE_DIR/Latency_Test"
