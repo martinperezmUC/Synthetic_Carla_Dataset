@@ -17,8 +17,8 @@ install_tools() {
     sshpass -p $PASS scp -r -P $PORT ./Throughput_Test $USER@$node:$WORKSPACE_DIR/
     
     echo "  [-] Fixing execution permissions on remote node..."
-    sshpass -p $PASS ssh $SSH_OPTS -p $PORT $USER@$node "chmod +x $WORKSPACE_DIR/Latency_Test/"
-    sshpass -p $PASS ssh $SSH_OPTS -p $PORT $USER@$node "chmod +x $WORKSPACE_DIR/Throughput_Test/"
+    sshpass -p $PASS ssh $SSH_OPTS -p $PORT $USER@$node "chmod +x $WORKSPACE_DIR/Latency_Test/*"
+    sshpass -p $PASS ssh $SSH_OPTS -p $PORT $USER@$node "chmod +x $WORKSPACE_DIR/Throughput_Test/*"
 }
 
 while IFS= read -r node <&3; do
