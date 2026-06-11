@@ -9,11 +9,11 @@ install_tools() {
 
     echo "[+] Installing tools..."
 
-    echo -e "\t[-] Creating workspace directories..."
+    echo "  [-] Creating workspace directories..."
     sshpass -p $PASS ssh $SSH_OPTS -p $PORT $USER@$node "mkdir -p $WORKSPACE_DIR/Latency_Test"
     sshpass -p $PASS ssh $SSH_OPTS -p $PORT $USER@$node "mkdir -p $WORKSPACE_DIR/Throughput_Test"
 
-    echo -e "\t[-] Copying executables..."
+    echo "  [-] Copying executables..."
     sshpass -p $PASS scp -P $PORT ./Latency_Test $USER@$node:$WORKSPACE_DIR/Latency_Test/
     sshpass -p $PASS scp -P $PORT ./Throughput_Test $USER@$node:$WORKSPACE_DIR/Throughput_Test/
 }
