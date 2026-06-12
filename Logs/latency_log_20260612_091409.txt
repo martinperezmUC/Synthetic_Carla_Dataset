@@ -1,0 +1,15 @@
+publisher running. Please press Ctrl+C to stop the publisher at any time.
+Waiting for matching...
+Matching complete. Starting Warm-up (100 samples)...
+Starting Latency Test (10000 samples)...
+
+--- RESULTS (One-Way Latency in microseconds) ---
+Samples : 10000
+Mean    : 162.45 us
+StDev   : 18.55 us
+Min     : 123.36 us
+50%     : 159.72 us
+90%     : 179.40 us
+99%     : 229.15 us
+99.99%  : 652.46 us
+Max     : 652.46 us

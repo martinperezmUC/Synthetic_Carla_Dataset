@@ -1,0 +1,87 @@
+subscriber running. Please press Ctrl+C to stop the subscriber at any time.
+--- Started edge node. Monitoring Throughput ---
+[Edge Node] New vehicle connected. Total number: 1
+[Throughput] 122808 msg/s | 134.60 Mbps | 16.82 MB/s 
+[Throughput] 144823 msg/s | 158.73 Mbps | 19.84 MB/s 
+[Throughput] 146474 msg/s | 160.54 Mbps | 20.07 MB/s 
+[Throughput] 147944 msg/s | 162.15 Mbps | 20.27 MB/s 
+[Throughput] 147253 msg/s | 161.39 Mbps | 20.17 MB/s 
+[Throughput] 147218 msg/s | 161.35 Mbps | 20.17 MB/s 
+[Throughput] 137024 msg/s | 150.18 Mbps | 18.77 MB/s 
+[Throughput] 134003 msg/s | 146.87 Mbps | 18.36 MB/s 
+[Throughput] 133879 msg/s | 146.73 Mbps | 18.34 MB/s 
+[Throughput] 133826 msg/s | 146.67 Mbps | 18.33 MB/s 
+[Throughput] 133916 msg/s | 146.77 Mbps | 18.35 MB/s 
+[Throughput] 145198 msg/s | 159.14 Mbps | 19.89 MB/s 
+[Throughput] 147111 msg/s | 161.23 Mbps | 20.15 MB/s 
+[Throughput] 136074 msg/s | 149.14 Mbps | 18.64 MB/s 
+[Throughput] 139040 msg/s | 152.39 Mbps | 19.05 MB/s 
+[Throughput] 148917 msg/s | 163.21 Mbps | 20.40 MB/s 
+[Throughput] 140223 msg/s | 153.69 Mbps | 19.21 MB/s 
+[Throughput] 133781 msg/s | 146.62 Mbps | 18.33 MB/s 
+[Throughput] 135737 msg/s | 148.77 Mbps | 18.60 MB/s 
+[Throughput] 135719 msg/s | 148.75 Mbps | 18.59 MB/s 
+[Throughput] 133683 msg/s | 146.52 Mbps | 18.31 MB/s 
+[Throughput] 137330 msg/s | 150.51 Mbps | 18.81 MB/s 
+[Throughput] 143334 msg/s | 157.09 Mbps | 19.64 MB/s 
+[Throughput] 148783 msg/s | 163.07 Mbps | 20.38 MB/s 
+[Throughput] 146975 msg/s | 161.08 Mbps | 20.14 MB/s 
+[Throughput] 140353 msg/s | 153.83 Mbps | 19.23 MB/s 
+[Throughput] 134678 msg/s | 147.61 Mbps | 18.45 MB/s 
+[Throughput] 134337 msg/s | 147.23 Mbps | 18.40 MB/s 
+[Throughput] 147136 msg/s | 161.26 Mbps | 20.16 MB/s 
+[Throughput] 149559 msg/s | 163.92 Mbps | 20.49 MB/s 
+[Throughput] 149243 msg/s | 163.57 Mbps | 20.45 MB/s 
+[Throughput] 149956 msg/s | 164.35 Mbps | 20.54 MB/s 
+[Throughput] 142107 msg/s | 155.75 Mbps | 19.47 MB/s 
+[Throughput] 144074 msg/s | 157.91 Mbps | 19.74 MB/s 
+[Throughput] 149838 msg/s | 164.22 Mbps | 20.53 MB/s 
+[Throughput] 150318 msg/s | 164.75 Mbps | 20.59 MB/s 
+[Throughput] 147722 msg/s | 161.90 Mbps | 20.24 MB/s 
+[Throughput] 149647 msg/s | 164.01 Mbps | 20.50 MB/s 
+[Throughput] 150049 msg/s | 164.45 Mbps | 20.56 MB/s 
+[Throughput] 148779 msg/s | 163.06 Mbps | 20.38 MB/s 
+[Throughput] 147200 msg/s | 161.33 Mbps | 20.17 MB/s 
+[Throughput] 146735 msg/s | 160.82 Mbps | 20.10 MB/s 
+[Throughput] 148494 msg/s | 162.75 Mbps | 20.34 MB/s 
+[Throughput] 149846 msg/s | 164.23 Mbps | 20.53 MB/s 
+[Throughput] 150960 msg/s | 165.45 Mbps | 20.68 MB/s 
+[Throughput] 150099 msg/s | 164.51 Mbps | 20.56 MB/s 
+[Throughput] 147221 msg/s | 161.35 Mbps | 20.17 MB/s 
+[Throughput] 148262 msg/s | 162.50 Mbps | 20.31 MB/s 
+[Throughput] 148178 msg/s | 162.40 Mbps | 20.30 MB/s 
+[Throughput] 146160 msg/s | 160.19 Mbps | 20.02 MB/s 
+[Throughput] 147991 msg/s | 162.20 Mbps | 20.27 MB/s 
+[Throughput] 148952 msg/s | 163.25 Mbps | 20.41 MB/s 
+[Throughput] 150307 msg/s | 164.74 Mbps | 20.59 MB/s 
+[Throughput] 142209 msg/s | 155.86 Mbps | 19.48 MB/s 
+[Throughput] 149215 msg/s | 163.54 Mbps | 20.44 MB/s 
+[Throughput] 134660 msg/s | 147.59 Mbps | 18.45 MB/s 
+[Throughput] 134123 msg/s | 147.00 Mbps | 18.37 MB/s 
+[Throughput] 134070 msg/s | 146.94 Mbps | 18.37 MB/s 
+[Throughput] 134810 msg/s | 147.75 Mbps | 18.47 MB/s 
+[Edge Node] Vehicle disconnected. Total number: 0
+[Edge Node] All vehicles disconnected.
+[Throughput] 133081 msg/s | 145.86 Mbps | 18.23 MB/s 
+
+--- RESULTS (Throughput - Message Rate in msg/s) ---
+Samples : 60
+Mean    : 143024.03 msg/s
+StDev   : 6756.44 msg/s
+Min     : 122808.00 msg/s
+50%     : 146735.00 msg/s
+90%     : 149956.00 msg/s
+99%     : 150960.00 msg/s
+99.99%  : 150960.00 msg/s
+Max     : 150960.00 msg/s
+
+--- RESULTS (Throughput - Bandwidth in Mbps) ---
+Samples : 60
+Mean    : 156.75 Mbps
+StDev   : 7.41 Mbps
+Min     : 134.60 Mbps
+50%     : 160.82 Mbps
+90%     : 164.35 Mbps
+99%     : 165.45 Mbps
+99.99%  : 165.45 Mbps
+Max     : 165.45 Mbps

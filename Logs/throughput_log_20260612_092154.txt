@@ -1,0 +1,92 @@
+subscriber running. Please press Ctrl+C to stop the subscriber at any time.
+--- Started edge node. Monitoring Throughput ---
+[Edge Node] New vehicle connected. Total number: 1
+[Edge Node] New vehicle connected. Total number: 2
+[Edge Node] New vehicle connected. Total number: 3
+[Throughput] 247264 msg/s | 271.00 Mbps | 33.88 MB/s 
+[Throughput] 280593 msg/s | 307.53 Mbps | 38.44 MB/s 
+[Throughput] 281170 msg/s | 308.16 Mbps | 38.52 MB/s 
+[Throughput] 280761 msg/s | 307.71 Mbps | 38.46 MB/s 
+[Throughput] 281068 msg/s | 308.05 Mbps | 38.51 MB/s 
+[Throughput] 283393 msg/s | 310.60 Mbps | 38.82 MB/s 
+[Throughput] 283757 msg/s | 311.00 Mbps | 38.87 MB/s 
+[Throughput] 282402 msg/s | 309.51 Mbps | 38.69 MB/s 
+[Throughput] 283168 msg/s | 310.35 Mbps | 38.79 MB/s 
+[Throughput] 282750 msg/s | 309.89 Mbps | 38.74 MB/s 
+[Throughput] 283200 msg/s | 310.39 Mbps | 38.80 MB/s 
+[Throughput] 282922 msg/s | 310.08 Mbps | 38.76 MB/s 
+[Throughput] 282672 msg/s | 309.81 Mbps | 38.73 MB/s 
+[Throughput] 281925 msg/s | 308.99 Mbps | 38.62 MB/s 
+[Throughput] 282529 msg/s | 309.65 Mbps | 38.71 MB/s 
+[Throughput] 282197 msg/s | 309.29 Mbps | 38.66 MB/s 
+[Throughput] 282754 msg/s | 309.90 Mbps | 38.74 MB/s 
+[Throughput] 282103 msg/s | 309.18 Mbps | 38.65 MB/s 
+[Throughput] 282253 msg/s | 309.35 Mbps | 38.67 MB/s 
+[Throughput] 282113 msg/s | 309.20 Mbps | 38.65 MB/s 
+[Throughput] 282289 msg/s | 309.39 Mbps | 38.67 MB/s 
+[Throughput] 282074 msg/s | 309.15 Mbps | 38.64 MB/s 
+[Throughput] 281748 msg/s | 308.80 Mbps | 38.60 MB/s 
+[Throughput] 281318 msg/s | 308.32 Mbps | 38.54 MB/s 
+[Throughput] 281177 msg/s | 308.17 Mbps | 38.52 MB/s 
+[Throughput] 282735 msg/s | 309.88 Mbps | 38.73 MB/s 
+[Throughput] 283087 msg/s | 310.26 Mbps | 38.78 MB/s 
+[Throughput] 283137 msg/s | 310.32 Mbps | 38.79 MB/s 
+[Throughput] 282195 msg/s | 309.29 Mbps | 38.66 MB/s 
+[Throughput] 282103 msg/s | 309.18 Mbps | 38.65 MB/s 
+[Throughput] 282603 msg/s | 309.73 Mbps | 38.72 MB/s 
+[Throughput] 282185 msg/s | 309.27 Mbps | 38.66 MB/s 
+[Throughput] 283151 msg/s | 310.33 Mbps | 38.79 MB/s 
+[Throughput] 282284 msg/s | 309.38 Mbps | 38.67 MB/s 
+[Throughput] 281053 msg/s | 308.03 Mbps | 38.50 MB/s 
+[Throughput] 281445 msg/s | 308.46 Mbps | 38.56 MB/s 
+[Throughput] 281612 msg/s | 308.65 Mbps | 38.58 MB/s 
+[Throughput] 281218 msg/s | 308.21 Mbps | 38.53 MB/s 
+[Throughput] 279213 msg/s | 306.02 Mbps | 38.25 MB/s 
+[Throughput] 263540 msg/s | 288.84 Mbps | 36.10 MB/s 
+[Throughput] 279739 msg/s | 306.59 Mbps | 38.32 MB/s 
+[Throughput] 280131 msg/s | 307.02 Mbps | 38.38 MB/s 
+[Throughput] 279852 msg/s | 306.72 Mbps | 38.34 MB/s 
+[Throughput] 279046 msg/s | 305.83 Mbps | 38.23 MB/s 
+[Throughput] 279388 msg/s | 306.21 Mbps | 38.28 MB/s 
+[Throughput] 279390 msg/s | 306.21 Mbps | 38.28 MB/s 
+[Throughput] 279223 msg/s | 306.03 Mbps | 38.25 MB/s 
+[Throughput] 280436 msg/s | 307.36 Mbps | 38.42 MB/s 
+[Throughput] 281323 msg/s | 308.33 Mbps | 38.54 MB/s 
+[Throughput] 279019 msg/s | 305.81 Mbps | 38.23 MB/s 
+[Throughput] 278623 msg/s | 305.37 Mbps | 38.17 MB/s 
+[Throughput] 279101 msg/s | 305.89 Mbps | 38.24 MB/s 
+[Throughput] 279053 msg/s | 305.84 Mbps | 38.23 MB/s 
+[Throughput] 278846 msg/s | 305.62 Mbps | 38.20 MB/s 
+[Throughput] 280152 msg/s | 307.05 Mbps | 38.38 MB/s 
+[Throughput] 280649 msg/s | 307.59 Mbps | 38.45 MB/s 
+[Throughput] 280851 msg/s | 307.81 Mbps | 38.48 MB/s 
+[Throughput] 280354 msg/s | 307.27 Mbps | 38.41 MB/s 
+[Throughput] 280371 msg/s | 307.29 Mbps | 38.41 MB/s 
+[Edge Node] Vehicle disconnected. Total number: 2
+[Throughput] 279913 msg/s | 306.78 Mbps | 38.35 MB/s 
+[Edge Node] Vehicle disconnected. Total number: 1
+[Edge Node] Vehicle disconnected. Total number: 0
+[Edge Node] All vehicles disconnected.
+[Throughput]   1553 msg/s | 1.70 Mbps | 0.21 MB/s 
+
+--- RESULTS (Throughput - Message Rate in msg/s) ---
+Samples : 61
+Mean    : 275871.70 msg/s
+StDev   : 35769.89 msg/s
+Min     : 1553.00 msg/s
+50%     : 281318.00 msg/s
+90%     : 283087.00 msg/s
+99%     : 283757.00 msg/s
+99.99%  : 283757.00 msg/s
+Max     : 283757.00 msg/s
+
+--- RESULTS (Throughput - Bandwidth in Mbps) ---
+Samples : 61
+Mean    : 302.36 Mbps
+StDev   : 39.20 Mbps
+Min     : 1.70 Mbps
+50%     : 308.32 Mbps
+90%     : 310.26 Mbps
+99%     : 311.00 Mbps
+99.99%  : 311.00 Mbps
+Max     : 311.00 Mbps
