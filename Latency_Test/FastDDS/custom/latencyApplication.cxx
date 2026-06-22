@@ -27,12 +27,14 @@
 //! Factory method to create a publisher or subscriber
 std::shared_ptr<latencyApplication> latencyApplication::make_app(
         const int& domain_id,
-        const std::string& entity_kind)
+        const std::string& entity_kind,
+        int samples,
+        int warmup)
 {
     std::shared_ptr<latencyApplication> entity;
     if (strcmp(entity_kind.c_str(), "publisher") == 0)
     {
-        entity = std::make_shared<latencyPublisherApp>(domain_id);
+        entity = std::make_shared<latencyPublisherApp>(domain_id, samples, warmup);
     }
     else if (strcmp(entity_kind.c_str(), "subscriber") == 0)
     {

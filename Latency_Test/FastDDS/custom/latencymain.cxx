@@ -67,7 +67,7 @@ int main(
     int domain_id = 0;
     std::shared_ptr<latencyApplication> app;
 
-    if (argc != 2 || (strcmp(argv[1], "publisher") != 0 && strcmp(argv[1], "subscriber") != 0))
+    if (argc < 2 || argc > 4 || (strcmp(argv[1], "publisher") != 0 && strcmp(argv[1], "subscriber") != 0))
     {
         std::cout << "Error: Incorrect arguments." << std::endl;
         std::cout << "Usage: " << std::endl << std::endl;
@@ -76,9 +76,17 @@ int main(
     }
     else
     {
+        // Default values
+        int samples = 10000;
+        int warmup = 100;
+
+        // Override defaults when provided by the user
+        if (argc > 2) samples = std::atoi(argv[2]);
+        if (argc > 3) warmup = std::atoi(argv[3]);
+
         try
         {
-            app = latencyApplication::make_app(domain_id, argv[1]);
+            app = latencyApplication::make_app(domain_id, argv[1], samples, warmup);
         }
         catch (const std::runtime_error& e)
         {

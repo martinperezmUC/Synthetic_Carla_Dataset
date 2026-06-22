@@ -22,11 +22,13 @@
 
 using namespace eprosima::fastdds::dds;
 
-latencyPublisherApp::latencyPublisherApp(const int& domain_id)
+latencyPublisherApp::latencyPublisherApp(const int& domain_id, int samples_to_send, int warmup_samples)
     : factory_(nullptr), participant_(nullptr), publisher_(nullptr), subscriber_(nullptr)
     , ping_topic_(nullptr), pong_topic_(nullptr), writer_(nullptr), reader_(nullptr)
     , type_(new SyntheticData::FramePubSubType()), stop_(false)
     , matched_pub_(0), matched_sub_(0), pong_received_(false)
+    , samples_to_send_(samples_to_send)
+    , warmup_samples_(warmup_samples)
 {
     DomainParticipantQos pqos = PARTICIPANT_QOS_DEFAULT;
     pqos.name("SyntheticData_Pinger");
@@ -98,6 +100,7 @@ void latencyPublisherApp::run() {
     }
 
     std::cout << "Starting Latency Test (" << samples_to_send_ << " samples)..." << std::endl;
+    times_.clear();
     times_.reserve(samples_to_send_);
 
     for (int i = 0; i < samples_to_send_ && !is_stopped(); ++i) {

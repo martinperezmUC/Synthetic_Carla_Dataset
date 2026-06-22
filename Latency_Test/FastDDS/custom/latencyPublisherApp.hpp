@@ -35,7 +35,7 @@ class latencyPublisherApp : public latencyApplication,
                                public eprosima::fastdds::dds::DataReaderListener
 {
 public:
-    latencyPublisherApp(const int& domain_id);
+    latencyPublisherApp(const int& domain_id, int samples_to_send, int warmup_samples);
     ~latencyPublisherApp();
 
     void on_publication_matched(eprosima::fastdds::dds::DataWriter* writer, const eprosima::fastdds::dds::PublicationMatchedStatus& info) override;
@@ -67,8 +67,8 @@ private:
     bool pong_received_;
 
     std::vector<double> times_;
-    int samples_to_send_ = 10000;
-    int warmup_samples_ = 100;
+    int samples_to_send_;
+    int warmup_samples_;
 
     bool is_stopped();
 };
