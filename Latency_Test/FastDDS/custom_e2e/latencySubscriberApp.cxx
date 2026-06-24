@@ -67,7 +67,7 @@ void latencySubscriberApp::on_data_available(DataReader* reader) {
     while (!is_stopped() && (RETCODE_OK == reader->take_next_sample(&sample, &info))) {
         if (info.valid_data) {
             // Destination timestamp
-            auto now = std::chrono::high_resolution_clock::now();
+            auto now = std::chrono::system_clock::now();
             int64_t now_us = std::chrono::duration_cast<std::chrono::microseconds>(
                 now.time_since_epoch()
             ).count();
@@ -75,13 +75,12 @@ void latencySubscriberApp::on_data_available(DataReader* reader) {
             // Source timestamp
             auto source_sec = info.source_timestamp.seconds();
             auto source_nsec = info.source_timestamp.nanosec();
-            int64_t source_us = (source_sec * 1000000) + (source_nsec / 1000);
-
+            int64_t source_us = (static_cast<int64_t>(source_sec) * 1000000) + (source_nsec / 1000);
             // Calculate E2E latency
             double latency_us = static_cast<double>(now_us - source_us);
             
             // Save result
-            if (latency_us >= 0) {
+            if (latency_us > 0) {
                 times_.push_back(latency_us);
             } else {
                 std::cout << "Uncoherent latency calculated." << std::endl;
@@ -95,6 +94,11 @@ void latencySubscriberApp::run() {
     
     std::unique_lock<std::mutex> lck(terminate_cv_mtx_);
     terminate_cv_.wait(lck, [this] { return is_stopped(); });
+
+    // Eliminar muestras de calentamiento
+    if (times_.size() > 100) {
+        times_.erase(times_.begin(), times_.begin() + 100);
+    }
 
     if (!times_.empty()) {
         std::sort(times_.begin(), times_.end());

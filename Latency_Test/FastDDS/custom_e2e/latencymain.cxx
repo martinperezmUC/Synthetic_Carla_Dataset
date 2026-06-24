@@ -67,7 +67,7 @@ int main(
     int domain_id = 0;
     std::shared_ptr<latencyApplication> app;
 
-    if (argc < 2 || argc > 5 || (strcmp(argv[1], "publisher") != 0 && strcmp(argv[1], "subscriber") != 0))
+    if (argc < 2 || argc > 6 || (strcmp(argv[1], "publisher") != 0 && strcmp(argv[1], "subscriber") != 0))
     {
         std::cout << "Error: Incorrect arguments." << std::endl;
         std::cout << "Usage: " << std::endl << std::endl;
@@ -80,15 +80,17 @@ int main(
         int samples = 10000;
         int warmup = 100;
         int interval_ms = 10;
+        std::string json_file_path = "data.json";
 
         // Override defaults when provided by the user
         if (argc > 2) samples = std::atoi(argv[2]);
         if (argc > 3) warmup = std::atoi(argv[3]);
         if (argc > 4) interval_ms = std::atoi(argv[4]);
+        if (argc > 5) json_file_path = argv[5];
 
         try
         {
-            app = latencyApplication::make_app(domain_id, argv[1], samples, warmup, interval_ms);
+            app = latencyApplication::make_app(domain_id, argv[1], samples, warmup, interval_ms, json_file_path);
         }
         catch (const std::runtime_error& e)
         {

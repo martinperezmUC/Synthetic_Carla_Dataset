@@ -35,7 +35,7 @@ class latencyPublisherApp : public latencyApplication,
                                public eprosima::fastdds::dds::DataReaderListener
 {
 public:
-    latencyPublisherApp(const int& domain_id, int samples_to_send, int warmup_samples, int interval_ms);
+    latencyPublisherApp(const int& domain_id, int samples_to_send, int warmup_samples, int interval_ms, std::string json_file_path);
     ~latencyPublisherApp();
 
     void on_publication_matched(eprosima::fastdds::dds::DataWriter* writer, const eprosima::fastdds::dds::PublicationMatchedStatus& info) override;
@@ -65,7 +65,9 @@ private:
     int samples_to_send_;
     int warmup_samples_;
     int interval_ms_;
-
+    std::string json_file_path_;
+    std::vector<SyntheticData::Frame> preloaded_frames_;
+    
     bool is_stopped();
 };
 
