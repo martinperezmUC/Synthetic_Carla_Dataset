@@ -342,7 +342,7 @@ def interactive_tune():
     # Filename
     print('JSON Filename:')
     print('  (.json extension will be added automatically)')
-    filename = ask_str('File:', 'Data_Generator/dataset')
+    filename = ask_str('File:', './dataset')
     if not filename.endswith('.json'):
         filename += '.json'
     print(f'  [+] Save in: ./{filename}\n')

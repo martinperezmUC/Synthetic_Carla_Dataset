@@ -240,7 +240,7 @@ void latencyPublisherApp::run() {
             preloaded_frames_.push_back(sample);
             samples_loaded++;
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(interval_ms_));
+            //std::this_thread::sleep_for(std::chrono::milliseconds(interval_ms_));
 
         } catch (const std::exception& e) {
             std::cerr << "Error pre-parsing frame: " << samples_loaded << ": " << e.what() << std::endl;

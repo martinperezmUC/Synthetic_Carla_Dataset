@@ -29,12 +29,13 @@ std::shared_ptr<latencyApplication> latencyApplication::make_app(
         const int& domain_id,
         const std::string& entity_kind,
         int samples,
-        int warmup)
+        int warmup,
+        const std::string& json_file_path)
 {
     std::shared_ptr<latencyApplication> entity;
     if (strcmp(entity_kind.c_str(), "publisher") == 0)
     {
-        entity = std::make_shared<latencyPublisherApp>(domain_id, samples, warmup);
+        entity = std::make_shared<latencyPublisherApp>(domain_id, samples, warmup, json_file_path);
     }
     else if (strcmp(entity_kind.c_str(), "subscriber") == 0)
     {

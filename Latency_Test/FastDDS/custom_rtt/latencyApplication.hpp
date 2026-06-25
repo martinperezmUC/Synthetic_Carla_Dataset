@@ -44,7 +44,8 @@ public:
             const int& domain_id,
             const std::string& entity_kind,
             int samples,
-            int warmup);
+            int warmup,
+            const std::string& json_file_path);
 };
 
 #endif // FAST_DDS_GENERATED__SYNTHETICDATA_DATA_TYPESAPPLICATION_HPP

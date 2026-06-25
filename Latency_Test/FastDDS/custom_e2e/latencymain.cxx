@@ -80,7 +80,7 @@ int main(
         int samples = 10000;
         int warmup = 100;
         int interval_ms = 10;
-        std::string json_file_path = "data.json";
+        std::string json_file_path = "dataset.json";
 
         // Override defaults when provided by the user
         if (argc > 2) samples = std::atoi(argv[2]);
