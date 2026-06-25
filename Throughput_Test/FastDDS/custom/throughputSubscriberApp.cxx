@@ -138,7 +138,7 @@ void throughputSubscriberApp::run() {
         // --- PRINT MESSAGE RATE ---
         std::cout << "\n--- RESULTS (Throughput - Message Rate in msg/s) ---" << std::endl;
         std::cout << std::fixed << std::setprecision(2);
-        std::cout << "Samples : " << msg_samples << std::endl;
+        std::cout << "Samples : " << samples_received_.load(std::memory_order_relaxed) << std::endl;
         std::cout << "Mean    : " << msg_mean << " msg/s" << std::endl;
         std::cout << "StDev   : " << msg_stdev << " msg/s" << std::endl;
         std::cout << "Min     : " << msg_history.front() << " msg/s" << std::endl;
@@ -151,7 +151,7 @@ void throughputSubscriberApp::run() {
         // --- PRINT BANDWIDTH ---
         std::cout << "\n--- RESULTS (Throughput - Bandwidth in Mbps) ---" << std::endl;
         std::cout << std::fixed << std::setprecision(2);
-        std::cout << "Samples : " << mbps_samples << std::endl;
+        //std::cout << "Samples : " << mbps_samples << std::endl;
         std::cout << "Mean    : " << mbps_mean << " Mbps" << std::endl;
         std::cout << "StDev   : " << mbps_stdev << " Mbps" << std::endl;
         std::cout << "Min     : " << mbps_history.front() << " Mbps" << std::endl;

@@ -67,7 +67,7 @@ int main(
     int domain_id = 0;
     std::shared_ptr<throughputApplication> app;
 
-    if (argc != 2 || (strcmp(argv[1], "publisher") != 0 && strcmp(argv[1], "subscriber") != 0))
+    if (argc < 2 || argc > 3 || (strcmp(argv[1], "publisher") != 0 && strcmp(argv[1], "subscriber") != 0))
     {
         std::cout << "Error: Incorrect arguments." << std::endl;
         std::cout << "Usage: " << std::endl << std::endl;
@@ -76,9 +76,11 @@ int main(
     }
     else
     {
+        std::string json_file_path = "dataset.json";
+        if (argc > 2) json_file_path = argv[2];
         try
         {
-            app = throughputApplication::make_app(domain_id, argv[1]);
+            app = throughputApplication::make_app(domain_id, argv[1], json_file_path);
         }
         catch (const std::runtime_error& e)
         {

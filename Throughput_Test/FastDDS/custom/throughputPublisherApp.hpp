@@ -29,7 +29,7 @@ class throughputPublisherApp : public throughputApplication,
                                public eprosima::fastdds::dds::DataWriterListener
 {
 public:
-    throughputPublisherApp(const int& domain_id);
+    throughputPublisherApp(const int& domain_id, std::string json_file_path);
     ~throughputPublisherApp();
 
     void on_publication_matched(eprosima::fastdds::dds::DataWriter* writer, const eprosima::fastdds::dds::PublicationMatchedStatus& info) override;
@@ -51,6 +51,8 @@ private:
     int matched_;
     
     int target_hz_;
+    std::string json_file_path_;
+    std::vector<SyntheticData::Frame> preloaded_frames_;
 
     bool is_stopped();
 };

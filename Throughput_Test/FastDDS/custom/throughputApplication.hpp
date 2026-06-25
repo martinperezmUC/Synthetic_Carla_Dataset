@@ -42,7 +42,8 @@ public:
     //! Factory method to create applications based on configuration
     static std::shared_ptr<throughputApplication> make_app(
             const int& domain_id,
-            const std::string& entity_kind);
+            const std::string& entity_kind,
+            const std::string& json_file_path);
 };
 
 #endif // FAST_DDS_GENERATED__SYNTHETICDATA_DATA_TYPESAPPLICATION_HPP
